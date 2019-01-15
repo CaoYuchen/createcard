@@ -1,0 +1,65 @@
+body {
+    background: #ffffff;
+    color: white;
+    font: normal 12px 'Open Sans', sans-serif;
+    /*margin-top: 20px;*/
+}
+
+button {
+    outline: none;
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+input{
+    outline:none;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden; 
+}
+
+.draw {
+        list-style: none;
+        padding: 0;
+        text-align: center;
+    }
+
+#can {
+   /*position: absolute;*/
+  /* text-align: center;*/
+    /*padding: 5px 0 0 30px;*/
+    margin: 0 -30px 0 0;
+    background-image:url(../media/lined-paper.svg);
+    display: line-block;
+}
+
+#canvasimg {
+    position: relative;
+    background-image:url(../media/lined-paper.svg);
+    display: line-block;
+    display: none;
+    vertical-align:top;
+    z-index: 1;
+}
+
+#btn {
+    position: relative;
+    vertical-align:top;
+    display: inline-block;
+    font-size:20px;
+    z-index: 1;
+}
+
+#clr {
+    position: relative;
+    vertical-align:top;
+    display: inline-block;
+    font-size:20px;
+    z-index: 1;
+
+}
