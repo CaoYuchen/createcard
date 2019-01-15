@@ -202,8 +202,8 @@ function save() {
     //background of handwriting
  	var bkg = new Image();
  	bkg.src = "./media/lined-paper.svg";
- 	bkg.crossOrigin = "anonymous";
- 	gender.crossOrigin = "anonymous";
+ 	// bkg.crossOrigin = "anonymous";
+ 	// gender.crossOrigin = "anonymous";
     merge.drawImage(gender,0,0);
     merge.drawImage(bkg,25,360,300,185);
     merge.drawImage(canvas,25,350);
@@ -214,7 +214,7 @@ function save() {
 
 
 function boy() {
-    document.getElementById("girl").type = "hidden";
+    document.getElementById("girl").style.display = "none";
     document.getElementById("boy").width = "350";
     gender.src = document.getElementById("boy").src;
     document.getElementById("myCanvas").style.display = "inline-block";
@@ -226,7 +226,7 @@ function boy() {
 }
 
 function girl() {
-    document.getElementById("boy").type = "hidden";
+    document.getElementById("boy").style.display = "none";
     document.getElementById("girl").width = "350";
     gender.src = document.getElementById("girl").src;
     document.getElementById("myCanvas").style.display = "inline-block";
@@ -248,8 +248,8 @@ $(document).delegate('.pop', 'click', function(event) {
         new top.PopLayer({
             "title": "",
             "content":
-            "<input type='image' src='./media/boy.svg' value='boy' id='boy' class='figure' width='200px' onclick='boy()'> \
-            <input type='image' src='./media/girl.svg' value='girl' id='girl' class='figure' width='200px' onclick='girl()'> \
+            "<img src='./media/boy.svg' id='boy' class='figure' width='200px'  onclick='boy()'> \
+            <img src='./media/girl.svg' id='girl' class='figure' width='200px'  onclick='girl()'> \
 			<br><canvas id='myCanvas' width='300px' height='175px' style='display:none'></canvas>\
             <button id='clr' onclick='erase()'><img id='eraser' src='./media/eraser.svg' width='25px' style='display:none'></button> \
             <div align='center'><button class='create' id='create' style='display:none' onclick='createIMG()'> &nbsp;&nbsp; Create &nbsp;&nbsp; </button></div>"

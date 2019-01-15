@@ -38,6 +38,9 @@ iframe{
 .figure{
     display: inline-block;
 }
+.figure:hover {
+    cursor: pointer;
+}
 
 
 .myModal {
