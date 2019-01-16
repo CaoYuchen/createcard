@@ -16,24 +16,17 @@ iframe{
     overflow: hidden;
 }
 
-.create {
-    color: #fff !important;
-    background: #3fc3f4;
-    padding: 10px 25px 10px;
-    margin:10px 0 10px 0;
-    font-weight: bold;
-    border-radius: 50px;
-    display: inline-block;
-    border: none;
+#main{
+    width: 85%;
+    margin: 5% auto;
 }
 
-.create:hover {
-    cursor:pointer;
-    text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
-    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-    transition: all 0.4s ease 0s;
+.title{
+    font-size: 50px;
+    margin:0 20px 0 0;
+    display: inline;
 }
+
 
 .figure{
     display: inline-block;
@@ -90,13 +83,6 @@ iframe{
 }
 
 
-/*div.draw {
-        list-style: none;
-        padding: 0;
-        text-align: center;
-    }*/
-
-
 #myCanvas {
    /*position: absolute;*/
   /* text-align: center;*/
@@ -105,22 +91,18 @@ iframe{
  /*   display: line-block;*/
 }
 
-#canvasimg {
-    position: relative;
-/*    background-image:url(../media/lined-paper.svg);*/
+.members {
     display: line-block;
-    display: none;
-    vertical-align:top;
-    z-index: 1;
 }
 
+.member {
+    margin:20px 10px;
+}
 
-#btn {
+.btn {
     position: relative;
-    vertical-align:top;
     /*display: inline-block;*/
-    font-size:20px;
-    z-index: 1;
+    margin:0 15px 0;
 }
 
 #clr {
@@ -130,5 +112,92 @@ iframe{
     /*display: inline-block;*/
     font-size:20px;
     z-index: 1;
-
 }
+
+
+.create {
+    color: #fff !important;
+    background: #3fc3f4;
+    padding: 10px 25px 10px;
+    margin:10px 0 10px 0;
+    font-weight: bold;
+    border-radius: 50px;
+    display: inline-block;
+    border: none;
+}
+
+.create:hover {
+    cursor:pointer;
+    text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    transition: all 0.4s ease 0s;
+}
+
+.delete{
+    position: absolute;
+    vertical-align:top;
+    margin-top: 20px;
+    margin-left: -35px;
+/*    right:5px;*/
+    /*display: inline-block;*/
+    z-index: 1;
+    display: none;
+}
+
+.group{
+    display:table;
+}
+
+.twogrp .g1{
+    width: 45%;
+    float:left;
+}
+
+
+.twogrp .g2{
+    width: 45%;
+    float:right; 
+}
+
+.threegrp .g1{
+    width: 30%;
+    float: left;
+}
+
+
+.threegrp .g2{
+    width: 30%;
+    display:inline-block;
+    margin-left: 5%;
+}
+
+.threegrp .g3{
+    width: 30%;
+    float:right;
+}
+
+
+.fourgrp .g1{
+    width: 20%;
+    float:left;
+}
+
+.fourgrp .g2{
+    width: 20%;
+    display:inline-block;
+    margin-left: 6.6%
+}
+
+
+.fourgrp .g3{
+    width: 20%;
+    display:inline-block;
+    margin-left: 6.6%
+}
+
+.fourgrp .g4{
+    width: 20%;
+    float:right;
+}
+

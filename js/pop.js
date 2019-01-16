@@ -100,6 +100,10 @@
                 $this.destroy();
                 return false;
             });
+            $(".create", this.myPop).on('click', function() {
+                $this.destroy();
+                return false;
+            });
 		},
         
 		getElement: function() {
@@ -150,6 +154,7 @@ var gender = new Image();
 var lineC = "grey",
     lineW = 3;
 
+var number=0;
 
 function InitThis() {
     ctx = document.getElementById('myCanvas').getContext("2d");
@@ -193,23 +198,46 @@ function Draw(x, y, isDown) {
 function erase() {
     // ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    document.getElementById("canvasimg").style.display = "none";
+    // document.getElementById("m"+number).style.display = "none";
 }
 
 function save() {
-    var dataURL = document.getElementById('myCanvas').toDataURL();
-    var merge = document.getElementById('can').getContext("2d");
-    //background of handwriting
- 	var bkg = new Image();
- 	bkg.src = "./media/lined-paper.svg";
- 	// bkg.crossOrigin = "anonymous";
- 	// gender.crossOrigin = "anonymous";
-    merge.drawImage(gender,0,0);
-    merge.drawImage(bkg,25,360,300,185);
-    merge.drawImage(canvas,25,350);
+    if(number<20)
+    {
+        var dataURL = document.getElementById('myCanvas').toDataURL();
+        var merge = document.getElementById('can').getContext("2d");
+        //background of handwriting
+     	var bkg = new Image();
+     	bkg.src = "./media/lined-paper.svg";
+     	// bkg.crossOrigin = "anonymous";
+     	// gender.crossOrigin = "anonymous";
+        merge.drawImage(gender,0,0);
+        merge.drawImage(bkg,25,360,300,185);
+        merge.drawImage(canvas,25,350);
+        ++number;
+        document.getElementById("m"+number).src = document.getElementById('can').toDataURL();
+        document.getElementById("m"+number).style.display = "inline-block";
+        merge.clearRect(0, 0, merge.canvas.width, merge.canvas.height);
+        if(number > 19)
+        {
+            $('#plus').attr("disabled",true);
+        }
+    }
+}
 
-    document.getElementById("canvasimg").src = document.getElementById('can').toDataURL();
-    document.getElementById("canvasimg").style.display = "inline-block";
+function showdelete(){
+    for(var i=1;i<number+1;i++)
+    { 
+        document.getElementById("d"+i).style.display = "inline-block";
+        $('#plus').attr("disabled",true);
+    }
+}
+function hidedelete(){
+     for(var i=1;i<number+1;i++)
+    { 
+        document.getElementById("d"+i).style.display = "none";
+        $('#plus').attr("disabled",false);
+    }
 }
 
 
@@ -236,14 +264,9 @@ function girl() {
 }
 
 
-function createIMG(){
-	save();
-}
-
-
 
 $(function() {
-$(document).delegate('.pop', 'click', function(event) {
+$(document).delegate('#plus', 'click', function(event) {
         // window.onload = function(){initCanvas()},
         new top.PopLayer({
             "title": "",
@@ -252,9 +275,78 @@ $(document).delegate('.pop', 'click', function(event) {
             <img src='./media/girl.svg' id='girl' class='figure' width='200px'  onclick='girl()'> \
 			<br><canvas id='myCanvas' width='300px' height='175px' style='display:none'></canvas>\
             <button id='clr' onclick='erase()'><img id='eraser' src='./media/eraser.svg' width='25px' style='display:none'></button> \
-            <div align='center'><button class='create' id='create' style='display:none' onclick='createIMG()'> &nbsp;&nbsp; Create &nbsp;&nbsp; </button></div>"
+            <div align='center'><button class='create' id='create' style='display:none' onclick='save()'> &nbsp;&nbsp; Create &nbsp;&nbsp; </button></div>"
     })
 
+})
+})
+
+
+$(function() {
+$(document).delegate('#team', 'click', function(event) {
+        // window.onload = function(){initCanvas()},
+        new top.PopLayer({
+            "title": "",
+            "content":
+            "<img src='./media/g1.png' class='team' width='600px'  onclick='twogrp()'><br> \
+            <img src='./media/g2.png'  class='team' width='600px'  onclick='threegrp()'><br> \
+            <img src='./media/g3.png'  class='team' width='600px'  onclick='fourgrp()'>"
+    })
+
+})
+})
+
+
+var deleteflag = false;
+$(function() {
+$(document).delegate('#minus', 'click', function(event) {
+    if(number > 0){
+        if(!deleteflag){
+            showdelete();
+            deleteflag = true;
+        }
+        else {
+            hidedelete();
+            deleteflag = false;
+        }
+    }     
+})
+})
+
+
+$(function() {
+$(document).delegate('.delete', 'click', function(event) {
+    var index = $(this).attr("id");
+    // console.log(index[1]);
+    document.getElementById("d"+number).style.display = "none";
+    document.getElementById("m"+number).style.display = "none";
+    if(index.length == 2)
+        ind = index[1];
+    else
+        ind = index[1]+index[2];    
+    k = Number(ind);
+
+    //hide delete button
+    deleteflag=false;
+    hidedelete();
+
+    for(k;k<number;k++)
+    {   
+        var tmp1 = document.getElementById("m"+k).src;
+        var tmp2 = document.getElementById("d"+k).src;
+        document.getElementById("m"+k).src=document.getElementById("m"+(k+1)).src;
+        document.getElementById("d"+k).src=document.getElementById("d"+(k+1)).src;
+        document.getElementById("m"+(k+1)).src=tmp1;
+        document.getElementById("d"+(k+1)).src=tmp2;
+    }
+
+    // console.log(k);
+
+    --number;
+    if(number < 20)
+    {
+        $('#plus').attr("disabled",false);
+    }
 })
 })
 
