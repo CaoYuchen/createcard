@@ -104,6 +104,10 @@
                 $this.destroy();
                 return false;
             });
+            $(".team", this.myPop).on('click', function() {
+                $this.destroy();
+                return false;
+            });
 		},
         
 		getElement: function() {
@@ -263,38 +267,26 @@ function girl() {
     InitThis();
 }
 
+function twogrp() {
+    $('.groups').attr("style","display:inline");
+    $('.twogrp').attr("style","display:inline");
+    $('.threegrp').attr("style","display:none");
+    $('.fourgrp').attr("style","display:none");
+}
 
+function threegrp() {
+    $('.groups').attr("style","display:inline");
+    $('.threegrp').attr("style","display:inline");
+    $('.twogrp').attr("style","display:none");
+    $('.fourgrp').attr("style","display:none");
+}
 
-$(function() {
-$(document).delegate('#plus', 'click', function(event) {
-        // window.onload = function(){initCanvas()},
-        new top.PopLayer({
-            "title": "",
-            "content":
-            "<img src='./media/boy.svg' id='boy' class='figure' width='200px'  onclick='boy()'> \
-            <img src='./media/girl.svg' id='girl' class='figure' width='200px'  onclick='girl()'> \
-			<br><canvas id='myCanvas' width='300px' height='175px' style='display:none'></canvas>\
-            <button id='clr' onclick='erase()'><img id='eraser' src='./media/eraser.svg' width='25px' style='display:none'></button> \
-            <div align='center'><button class='create' id='create' style='display:none' onclick='save()'> &nbsp;&nbsp; Create &nbsp;&nbsp; </button></div>"
-    })
-
-})
-})
-
-
-$(function() {
-$(document).delegate('#team', 'click', function(event) {
-        // window.onload = function(){initCanvas()},
-        new top.PopLayer({
-            "title": "",
-            "content":
-            "<img src='./media/g1.png' class='team' width='600px'  onclick='twogrp()'><br> \
-            <img src='./media/g2.png'  class='team' width='600px'  onclick='threegrp()'><br> \
-            <img src='./media/g3.png'  class='team' width='600px'  onclick='fourgrp()'>"
-    })
-
-})
-})
+function fourgrp() {
+    $('.groups').attr("style","display:inline");
+    $('.fourgrp').attr("style","display:inline");
+    $('.twogrp').attr("style","display:none");
+    $('.threegrp').attr("style","display:none");
+}
 
 
 var deleteflag = false;
@@ -350,6 +342,40 @@ $(document).delegate('.delete', 'click', function(event) {
 })
 })
 
+
+
+
+
+$(function() {
+$(document).delegate('#plus', 'click', function(event) {
+        // window.onload = function(){initCanvas()},
+        new top.PopLayer({
+            "title": "",
+            "content":
+            "<img src='./media/boy.svg' id='boy' class='figure' width='200px'  onclick='boy()'> \
+            <img src='./media/girl.svg' id='girl' class='figure' width='200px'  onclick='girl()'> \
+            <br><canvas id='myCanvas' width='300px' height='175px' style='display:none'></canvas>\
+            <button id='clr' onclick='erase()'><img id='eraser' src='./media/eraser.svg' width='25px' style='display:none'></button> \
+            <div align='center'><button class='create' id='create' style='display:none' onclick='save()'> &nbsp;&nbsp; Create &nbsp;&nbsp; </button></div>"
+    })
+
+})
+})
+
+
+$(function() {
+$(document).delegate('#team', 'click', function(event) {
+        // window.onload = function(){initCanvas()},
+        new top.PopLayer({
+            "title": "",
+            "content":
+            "<img src='./media/g1.png' class='team' width='600px'  onclick='twogrp()'><br> \
+            <img src='./media/g2.png'  class='team' width='600px'  onclick='threegrp()'><br> \
+            <img src='./media/g3.png'  class='team' width='600px'  onclick='fourgrp()'>"
+    })
+
+})
+})
 
 // <canvas id='can' width='400' height='100' style='display:none'></canvas>
 // <iframe id='can' src='draw.html' frameborder='0' scrolling='no' width='400' style='display:none'></iframe>\

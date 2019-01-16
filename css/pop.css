@@ -16,6 +16,10 @@ iframe{
     overflow: hidden;
 }
 
+body{
+    font-family: "Source Sans Pro", "Arial", sans-serif;
+}
+
 #main{
     width: 85%;
     margin: 5% auto;
@@ -145,8 +149,8 @@ iframe{
     display: none;
 }
 
-.group{
-    display:table;
+.groups{
+    display:none;
 }
 
 .twogrp .g1{
@@ -201,3 +205,18 @@ iframe{
     float:right;
 }
 
+.team {
+    display: block;
+}
+
+.twogrp{
+    display:none;
+}
+
+.threegrp{
+    display:none;
+}
+
+.fourgrp{
+    display:none;
+}
