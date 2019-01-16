@@ -31,6 +31,13 @@ body{
     display: inline;
 }
 
+.stitle{
+    display: inline-block;
+    font-size: 25px;
+    margin: 20px 0 10px 0;
+    font-weight: bold;
+}
+
 
 .figure{
     display: inline-block;
@@ -220,3 +227,10 @@ body{
 .fourgrp{
     display:none;
 }
+
+.star{
+    display:inline-block;
+    float:right;
+    margin:20px 0 10px 0;
+}
+
