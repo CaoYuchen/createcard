@@ -192,19 +192,19 @@ function InitThis() {
 
     // Draw something when a touch start is detected
     $('#myCanvas').on('touchstart', function(e){
+        e.preventDefault();
         touched = true;
         Draw(e.touches[0].pageX - $(this).offset().left, e.touches[0].pageY -  $(this).offset().top, false);
         // console.log(e.touches[0].pageX);
         // console.log($(this).offset().left);
         // console.log(e.touches[0].clientX);
         // console.log(e.touches[0].target.offsetLeft);
-        e.preventDefault();
     });
 
     $('#myCanvas').on('touchmove', function(e){
         if (touched) {
-            Draw(e.touches[0].pageX - $(this).offset().left, e.touches[0].pageY - $(this).offset().top, true);
             e.preventDefault();
+            Draw(e.touches[0].pageX - $(this).offset().left, e.touches[0].pageY - $(this).offset().top, true);
         }
     });
 
