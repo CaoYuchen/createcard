@@ -168,6 +168,11 @@ function InitThis() {
     $('#myCanvas').mousedown(function (e) {
         mousePressed = true;
         Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, false);
+        // console.log($(this).offset().left);
+        // console.log(e.target.offsetLeft);
+        // console.log(e.clientX);
+        // console.log(e.pageX);
+
     });
 
     $('#myCanvas').mousemove(function (e) {
@@ -188,19 +193,24 @@ function InitThis() {
     // Draw something when a touch start is detected
     $('#myCanvas').on('touchstart', function(e){
         touched = true;
-        Draw(e.touches[0].pageX - $(this).offset().left, e.touches[0].pageY - $(this).offset().top, false);
+        Draw(e.touches[0].pageX - $(this).offset().left, e.touches[0].pageY -  $(this).offset().top, false);
+        // console.log(e.touches[0].pageX);
+        // console.log($(this).offset().left);
+        // console.log(e.touches[0].clientX);
+        // console.log(e.touches[0].target.offsetLeft);
         e.preventDefault();
     });
 
     $('#myCanvas').on('touchmove', function(e){
         if (touched) {
             Draw(e.touches[0].pageX - $(this).offset().left, e.touches[0].pageY - $(this).offset().top, true);
+            e.preventDefault();
         }
-        e.preventDefault();
     });
 
     $('#myCanvas').on('touchend', function(e){
         touched = false;
+        e.preventDefault();
     });
 
 }
