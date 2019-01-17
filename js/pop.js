@@ -151,6 +151,7 @@
 
 
 var mousePressed = false;
+var touched = false;
 var lastX, lastY;
 var ctx, canvas;
 var gender = new Image();
@@ -182,6 +183,26 @@ function InitThis() {
     $('#myCanvas').mouseleave(function (e) {
         mousePressed = false;
     });
+
+
+    // Draw something when a touch start is detected
+    $('#myCanvas').on('touchstart', function(e){
+        touched = true;
+        Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, false);
+        e.preventDefault();
+    });
+
+    $('#myCanvas').on('touchmove', function(e){
+        if (touched) {
+            Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, true);
+        }
+        e.preventDefault();
+    });
+
+    $('#myCanvas').on('touchend', function(e){
+        touched = false;
+    });
+
 }
 
 function Draw(x, y, isDown) {
