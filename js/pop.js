@@ -56,7 +56,7 @@
             }
 			$("body", this.document).append(this.myPop);
             $(".myPop-title-value", this.myPop).html(this.title);//设置标题
-            this.myPop.css("top", (this.document.documentElement.clientHeight - this.myPop.height() - 600 ) / 2 + "px");
+            this.myPop.css("top", (this.document.documentElement.clientHeight - this.myPop.height()  ) / 2 + "px");
 			this.myPop.css("left", (this.document.documentElement.clientWidth - this.myPop.width()) / 2 + "px");
             this.myPop.show();
 		},
@@ -369,8 +369,8 @@ $(document).delegate('#team', 'click', function(event) {
         new top.PopLayer({
             "title": "",
             "content":
-            "<img src='./media/g1.png' class='team' width='600px'  onclick='twogrp()'><br> \
-            <img src='./media/g2.png'  class='team' width='600px'  onclick='threegrp()'><br> \
+            "<img src='./media/g1.png' class='team' width='600px'  onclick='twogrp()'> \
+            <img src='./media/g2.png'  class='team' width='600px'  onclick='threegrp()'> \
             <img src='./media/g3.png'  class='team' width='600px'  onclick='fourgrp()'>"
     })
 
