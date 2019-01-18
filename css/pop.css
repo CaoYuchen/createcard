@@ -98,12 +98,16 @@ body{
    /*position: absolute;*/
   /* text-align: center;*/
     /*padding: 5px 0 0 30px;*/
-    background-image:url(../media/lined-paper.svg);
+    /*background-image:url(../media/lined-paper.svg);*/
  /*   display: line-block;*/
 }
 
-.members {
-    display: line-block;
+/*.members {
+    display: inline-block;
+}*/
+
+div.member-layer{
+    display: inline-block;
 }
 
 .member {
@@ -114,6 +118,12 @@ body{
     position: relative;
     /*display: inline-block;*/
     margin:0 15px 0;
+}
+
+.groupbtn {
+    display:inline-block;
+    float:right;
+    margin:20px 0 10px 20px;
 }
 
 #clr {
@@ -146,6 +156,17 @@ body{
 }
 
 .delete{
+    position: absolute;
+    vertical-align:top;
+    margin-top: 20px;
+    margin-left: -35px;
+/*    right:5px;*/
+    /*display: inline-block;*/
+    z-index: 1;
+    display: none;
+}
+
+.groupplus{
     position: absolute;
     vertical-align:top;
     margin-top: 20px;

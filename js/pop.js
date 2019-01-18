@@ -149,7 +149,7 @@
 })()
 
 
-
+var max = 20;
 var mousePressed = false;
 var touched = false;
 var lastX, lastY;
@@ -164,6 +164,10 @@ var number=0;
 function InitThis() {
     ctx = document.getElementById('myCanvas').getContext("2d");
     canvas = document.getElementById('myCanvas');
+
+    var bkgimg = document.getElementById("bkgimg");
+
+    ctx.drawImage(bkgimg, 10, 10);
 
     $('#myCanvas').mousedown(function (e) {
         mousePressed = true;
@@ -237,13 +241,13 @@ function erase() {
 }
 
 function save() {
-    if(number<20)
+    if(number<max)
     {
         var dataURL = document.getElementById('myCanvas').toDataURL();
         var merge = document.getElementById('can').getContext("2d");
         //background of handwriting
      	var bkg = new Image();
-     	bkg.src = "./media/lined-paper.svg";
+     	// bkg.src = "./media/lined-paper.svg";
      	// bkg.crossOrigin = "anonymous";
      	// gender.crossOrigin = "anonymous";
         merge.drawImage(gender,0,0);
@@ -253,7 +257,7 @@ function save() {
         document.getElementById("m"+number).src = document.getElementById('can').toDataURL();
         document.getElementById("m"+number).style.display = "inline-block";
         merge.clearRect(0, 0, merge.canvas.width, merge.canvas.height);
-        if(number > 19)
+        if(number > (max - 1))
         {
             $('#plus').attr("disabled",true);
         }
@@ -275,6 +279,56 @@ function hidedelete(){
     }
 }
 
+
+function showplus(){
+    for(var i=1;i<number+1;i++)
+    { 
+        if (used[i-1] == 0)
+        {
+        document.getElementById("p"+i).style.display = "inline-block";
+        $('#plus').attr("disabled",true);
+        $('#minus').attr("disabled",true);
+        $('#groupminus').attr("disabled",true);    
+        }
+    }
+}
+
+function hideplus(){
+     for(var i=1;i<number+1;i++)
+    { 
+        document.getElementById("p"+i).style.display = "none";
+        $('#plus').attr("disabled",false);
+        $('#minus').attr("disabled",false);
+        $('#groupminus').attr("disabled",false);
+    }
+}
+
+ function showgroupdelete(){
+    for(var i=0;i<max;i++)
+    {  
+        if(used[i]==1)
+        {
+            document.getElementById("gd"+(i+1)).style.display = "inline-block";
+            $('#plus').attr("disabled",true);
+            $('#minus').attr("disabled",true);
+            $('#groupplus').attr("disabled",true); 
+        }
+   
+    }
+    }
+
+    function hidegroupdelete(){
+    for(var i=0;i<max;i++)
+    {  
+        if(used[i]==1)
+        {
+            document.getElementById("gd"+(i+1)).style.display = "none";
+            $('#plus').attr("disabled",false);
+            $('#minus').attr("disabled",false);
+            $('#groupplus').attr("disabled",false);
+        }
+    }
+    }     
 
 function boy() {
     document.getElementById("girl").style.display = "none";
@@ -323,7 +377,7 @@ function fourgrp() {
 var deleteflag = false;
 $(function() {
 $(document).delegate('#minus', 'click', function(event) {
-    if(number > 0){
+    if(number > 0 && !teamed){
         if(!deleteflag){
             showdelete();
             deleteflag = true;
@@ -337,49 +391,148 @@ $(document).delegate('#minus', 'click', function(event) {
 })
 
 
+
+var plusflag = false;
+var classname = null;
+var subclass = null;
+$(function() {
+$(document).delegate('#grpplus', 'click', function(event) {
+    if(number > 0 && !groupdeleteflag){
+        if(!plusflag){
+            showplus();
+            plusflag = true;
+            classname = $(this).parent().parent().attr("class");
+            subclass = $(this).parent().attr("class");
+        }
+        else {
+            hideplus();
+            plusflag = false;
+        }
+    }     
+})
+})
+
+var groupdeleteflag = false;
+$(function() {
+$(document).delegate('#grpminus', 'click', function(event) {
+    if(number > 0 && !plusflag){
+        if(!groupdeleteflag){
+            showgroupdelete();
+            groupdeleteflag = true;
+        }
+        else {
+            hidegroupdelete();
+            groupdeleteflag = false;
+        }
+    }
+
+})
+})
+
+
 $(function() {
 $(document).delegate('.delete', 'click', function(event) {
-    var index = $(this).attr("id");
-    // console.log(index[1]);
-    document.getElementById("d"+number).style.display = "none";
-    document.getElementById("m"+number).style.display = "none";
-    if(index.length == 2)
-        ind = index[1];
-    else
-        ind = index[1]+index[2];    
-    k = Number(ind);
+    if(groupdeleteflag){
+        var index = $(this).attr("id");
+        console.log(index);
+        $("#" + index).remove();
+        index = index.replace("gd","g");
+        $("#" + index).remove();
+        index = parseInt(index.replace("g",""));
+        console.log(index);
+        used[index-1]=0;
 
-    //hide delete button
-    deleteflag=false;
-    hidedelete();
+        groupdeleteflag=false;
+        hidegroupdelete();
 
-    for(k;k<number;k++)
-    {   
-        var tmp1 = document.getElementById("m"+k).src;
-        var tmp2 = document.getElementById("d"+k).src;
-        document.getElementById("m"+k).src=document.getElementById("m"+(k+1)).src;
-        document.getElementById("d"+k).src=document.getElementById("d"+(k+1)).src;
-        document.getElementById("m"+(k+1)).src=tmp1;
-        document.getElementById("d"+(k+1)).src=tmp2;
     }
 
-    // console.log(k);
+    else{
+        var index = $(this).attr("id");
+        // console.log(index[1]);
+        document.getElementById("d"+number).style.display = "none";
+        document.getElementById("m"+number).style.display = "none";
+        document.getElementById("p"+number).style.display = "none";
+        if(index.length == 2)
+            ind = index[1];
+        else
+            ind = index[1]+index[2];    
+        k = Number(ind);
 
-    --number;
-    if(number < 20)
-    {
-        $('#plus').attr("disabled",false);
+        //hide delete button
+        deleteflag=false;
+        hidedelete();
+
+        for(k;k<number;k++)
+        {   
+            var tmp1 = document.getElementById("m"+k).src;
+            document.getElementById("m"+k).src=document.getElementById("m"+(k+1)).src;
+            document.getElementById("m"+(k+1)).src=tmp1;
+
+            var tmp2 = document.getElementById("d"+k).src;
+            document.getElementById("d"+k).src=document.getElementById("d"+(k+1)).src;
+            document.getElementById("d"+(k+1)).src=tmp2;
+
+            var tmp3 = document.getElementById("p"+k).src;
+            document.getElementById("p"+k).src=document.getElementById("p"+(k+1)).src;
+            document.getElementById("p"+(k+1)).src=tmp3;
+            var n = used[k-1];
+            used[k-1]=used[k];
+            used[k]=n;
+        }
+
+        // console.log(k);
+
+        --number;
+        if(number < 20)
+        {
+            $('#plus').attr("disabled",false);
+        }
     }
+    
+
+
 })
 })
 
+
+var used = new Array(max);
+for(var i=0; i<max; i++)
+    used[i]=0;
+
+
+$(function() {
+$(document).delegate('.groupplus', 'click', function(event) {
+    
+    var index = $(this).siblings('.member').attr("id");
+    // console.log(index);
+    // var content = '<img class="member" id="g' + index + '" ' + src + ' width="120px">';
+    // copy image
+    var content = $("#"+index).clone();
+    content.attr("id",index.replace("m","g"));
+    $('.' + classname + ' > .' + subclass + ' > .groupmember').append(content);
+    // copy button
+    index = $(this).siblings('.delete').attr("id");
+    content = $("#"+index).clone();
+    content.attr("id","g"+index);
+    $('.' + classname + ' > .' + subclass + ' > .groupmember').append(content);
+
+    plusflag = false;
+    hideplus();
+
+    var n = $(this).attr("id");
+    n = parseInt(n.replace("p",""));
+    used[n-1] = 1;
+    
+})
+})
 
 
 
 
 $(function() {
 $(document).delegate('#plus', 'click', function(event) {
-        // window.onload = function(){initCanvas()},
+    if(!teamed){
         new top.PopLayer({
             "title": "",
             "content":
@@ -388,25 +541,45 @@ $(document).delegate('#plus', 'click', function(event) {
             <br><canvas id='myCanvas' width='300px' height='175px' style='display:none'></canvas>\
             <button id='clr' onclick='erase()'><img id='eraser' src='./media/eraser.svg' width='25px' style='display:none'></button> \
             <div align='center'><button class='create' id='create' style='display:none' onclick='save()'> &nbsp;&nbsp; Create &nbsp;&nbsp; </button></div>"
-    })
+        })
+    }
 
 })
 })
 
-
+var teamed = false;
 $(function() {
 $(document).delegate('#team', 'click', function(event) {
-        // window.onload = function(){initCanvas()},
+
+    if(!teamed){
         new top.PopLayer({
-            "title": "",
-            "content":
-            "<img src='./media/g1.png' class='team' width='600px'  onclick='twogrp()'> \
-            <img src='./media/g2.png'  class='team' width='600px'  onclick='threegrp()'> \
-            <img src='./media/g3.png'  class='team' width='600px'  onclick='fourgrp()'>"
-    })
+        "title": "",
+        "content":
+        "<img src='./media/g1.png' class='team' width='600px'  onclick='twogrp()'> \
+        <img src='./media/g2.png'  class='team' width='600px'  onclick='threegrp()'> \
+        <img src='./media/g3.png'  class='team' width='600px'  onclick='fourgrp()'>"
+        });
+        teamed =true;
+
+        $('#noteam').click(function(){
+            $('.groups').attr("style","display:none");
+            
+            teamed = false;
+            for(var i=0; i<max; i++)
+            {
+                used[i]=0;
+            }
+
+            $(".groupmember").html("");
+        });
+
+    }
 
 })
 })
+
+
+
 
 // <canvas id='can' width='400' height='100' style='display:none'></canvas>
 // <iframe id='can' src='draw.html' frameborder='0' scrolling='no' width='400' style='display:none'></iframe>\
