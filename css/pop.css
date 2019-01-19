@@ -18,7 +18,9 @@ iframe{
 
 body{
     font-family: "Source Sans Pro", "Arial", sans-serif;
+    cursor: url(./media/s1.svg),auto;
 }
+
 
 #main{
     width: 85%;

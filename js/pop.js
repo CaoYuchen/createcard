@@ -580,6 +580,19 @@ $(document).delegate('#team', 'click', function(event) {
 
 
 
+$(function() {
+$(document).delegate('.star', 'click', function(event) {
+
+    var src = $(this).find('img').attr("src");
+    src = 'url(' + src + '), auto';
+    console.log(src);
+    $("body").css('cursor',src);
+
+})
+})
+
+
+
 
 // <canvas id='can' width='400' height='100' style='display:none'></canvas>
 // <iframe id='can' src='draw.html' frameborder='0' scrolling='no' width='400' style='display:none'></iframe>\
