@@ -16,10 +16,12 @@ iframe{
     overflow: hidden;
 }
 
+
 body{
     font-family: "Source Sans Pro", "Arial", sans-serif;
-    cursor: url(./media/s1.svg),auto;
 }
+
+
 
 
 #main{
@@ -37,6 +39,14 @@ body{
     display: inline-block;
     font-size: 25px;
     margin: 20px 0 10px 0;
+    font-weight: bold;
+}
+
+.score{
+    display: block;
+    font-size: 18px;
+    margin: 20px 0 10px 0;
+    padding: 10px 0;
     font-weight: bold;
 }
 
@@ -116,6 +126,10 @@ div.member-layer{
     margin:20px 10px;
 }
 
+.gmember {
+    margin:20px 10px;
+}
+
 .btn {
     position: relative;
     /*display: inline-block;*/
@@ -164,7 +178,7 @@ div.member-layer{
     margin-left: -35px;
 /*    right:5px;*/
     /*display: inline-block;*/
-    z-index: 1;
+    z-index: 99;
     display: none;
 }
 
@@ -175,7 +189,7 @@ div.member-layer{
     margin-left: -35px;
 /*    right:5px;*/
     /*display: inline-block;*/
-    z-index: 1;
+    z-index: 99;
     display: none;
 }
 
@@ -257,6 +271,26 @@ div.member-layer{
     margin:20px 0 10px 0;
 }
 
+.nostar{
+    display:inline-block;
+    float:right;
+    margin:20px 0 10px 0;
+}
+
 .team{
     margin:10px 0 0;
+}
+
+.scorep {
+    position: fixed;
+    z-index: 2;
+}
+
+.scoreg {
+    display:inline-block;
+    margin: 0 5px 0;
+}
+
+.score span{
+    display:inline-block;
 }

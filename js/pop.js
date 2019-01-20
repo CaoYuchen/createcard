@@ -195,7 +195,7 @@ function InitThis() {
 
 
     // Draw something when a touch start is detected
-    $('#myCanvas').on('touchstart', function(e){
+    $('#myCanvas').on("touchstart", function(e){
         e.preventDefault();
         touched = true;
         Draw(e.touches[0].pageX - $(this).offset().left, e.touches[0].pageY -  $(this).offset().top, false);
@@ -205,14 +205,14 @@ function InitThis() {
         // console.log(e.touches[0].target.offsetLeft);
     });
 
-    $('#myCanvas').on('touchmove', function(e){
+    $('#myCanvas').on("touchmove", function(e){
         if (touched) {
             e.preventDefault();
             Draw(e.touches[0].pageX - $(this).offset().left, e.touches[0].pageY - $(this).offset().top, true);
         }
     });
 
-    $('#myCanvas').on('touchend', function(e){
+    $('#myCanvas').on("touchend", function(e){
         touched = false;
         e.preventDefault();
     });
@@ -377,7 +377,7 @@ function fourgrp() {
 var deleteflag = false;
 $(function() {
 $(document).delegate('#minus', 'click', function(event) {
-    if(number > 0 && !teamed){
+    if(number > 0 ){
         if(!deleteflag){
             showdelete();
             deleteflag = true;
@@ -434,12 +434,12 @@ $(function() {
 $(document).delegate('.delete', 'click', function(event) {
     if(groupdeleteflag){
         var index = $(this).attr("id");
-        console.log(index);
+        // console.log(index);
         $("#" + index).remove();
         index = index.replace("gd","g");
         $("#" + index).remove();
         index = parseInt(index.replace("g",""));
-        console.log(index);
+        // console.log(index);
         used[index-1]=0;
 
         groupdeleteflag=false;
@@ -509,7 +509,9 @@ $(document).delegate('.groupplus', 'click', function(event) {
     // var content = '<img class="member" id="g' + index + '" ' + src + ' width="120px">';
     // copy image
     var content = $("#"+index).clone();
-    content.attr("id",index.replace("m","g"));
+    index = index.replace("m","g");
+    content.attr("id",index);
+    content.attr("class", "gmember");
     $('.' + classname + ' > .' + subclass + ' > .groupmember').append(content);
     // copy button
     index = $(this).siblings('.delete').attr("id");
@@ -532,7 +534,6 @@ $(document).delegate('.groupplus', 'click', function(event) {
 
 $(function() {
 $(document).delegate('#plus', 'click', function(event) {
-    if(!teamed){
         new top.PopLayer({
             "title": "",
             "content":
@@ -542,7 +543,6 @@ $(document).delegate('#plus', 'click', function(event) {
             <button id='clr' onclick='erase()'><img id='eraser' src='./media/eraser.svg' width='25px' style='display:none'></button> \
             <div align='center'><button class='create' id='create' style='display:none' onclick='save()'> &nbsp;&nbsp; Create &nbsp;&nbsp; </button></div>"
         })
-    }
 
 })
 })
@@ -571,26 +571,82 @@ $(document).delegate('#team', 'click', function(event) {
             }
 
             $(".groupmember").html("");
+            $(".score").html("<span>Scores:</span>");
         });
-
     }
-
 })
 })
 
 
-
+var starflag = true;
+var src, xc, yc;
 $(function() {
 $(document).delegate('.star', 'click', function(event) {
 
-    var src = $(this).find('img').attr("src");
-    src = 'url(' + src + '), auto';
-    console.log(src);
-    $("body").css('cursor',src);
+    src = $(this).find('img').attr("src");
+    var cursor = src.replace("svg","png");
+    cursor = 'url(' + cursor + '), auto';
+    // console.log(cursor);
+    $('body').css('cursor',cursor);
+    starflag = false;
+
+    
+    $('.member').on('click', function(e){
+        if(!starflag){
+        xc = e.pageX;
+        yc = e.pageY;
+        // console.log(xc);
+        // console.log(src);
+
+        star = '<img class="scorep" src="'+ src +'" width="30px" style="top:'+yc +'px;left:'+xc+'px">';
+        $('#main').append(star);
+
+        $('body').css('cursor','auto');
+        starflag = true;
+        }
+    })
+
+
+    $('.score , .groupmember').on('click', function(e){
+        if(!starflag){
+        // if()
+        var index = $(this).parent().attr('class');
+        index = '.' + index + '> .score';
+        star = '<img class="scoreg" src="'+ src +'" width="30px" align="absmiddle">';
+        $(index).append(star);
+
+        $('body').css('cursor','auto');
+        starflag = true;
+        }
+    })
+
+    $('body').on('click', function(e){
+        if(!starflag){
+            $('body').css('cursor','auto');
+            starflag = true;
+        }
+    })
 
 })
 })
 
+var stardeleteflag = true;
+$(document).delegate('.nostar', 'click', function(){
+
+    stardeleteflag =  false;
+    $('.scorep , .scoreg').on('click',function(){
+        if (!stardeleteflag){
+            $(this).remove();
+            stardeleteflag = true;
+        }  
+    })
+
+    $('body').on('click', function(e){
+        if(!stardeleteflag){
+            stardeleteflag = true;
+        }
+    })
+})
 
 
 
