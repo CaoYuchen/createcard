@@ -237,6 +237,8 @@ function Draw(x, y, isDown) {
 function erase() {
     // ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    var bkgimg = document.getElementById("bkgimg");
+    ctx.drawImage(bkgimg, 10, 10);
     // document.getElementById("m"+number).style.display = "none";
 }
 
