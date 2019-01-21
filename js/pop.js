@@ -30,14 +30,12 @@
             "width": 0, 
             "height": 0
         };
-        this.id = ++top.PopLayer.id;
 		//模态加遮罩层
 		var modal = this.getElement();
 		if (this.isModal) {
 			this.myModal = modal.myModal;
 		}
 		this.myPop = modal.myPop;
-        top.PopLayer.instances[this.id] = this;
 		//初始化
 		this.init();
 	};
@@ -56,8 +54,9 @@
             }
 			$("body", this.document).append(this.myPop);
             $(".myPop-title-value", this.myPop).html(this.title);//设置标题
-            this.myPop.css("top", (this.document.documentElement.clientHeight - this.myPop.height()  ) / 2 + "px");
-			this.myPop.css("left", (this.document.documentElement.clientWidth - this.myPop.width()) / 2 + "px");
+            console.log(this.myPop.outerHeight());
+            this.myPop.css("top", (this.document.documentElement.scrollHeight - this.myPop.outerHeight()) / 2 + "px");
+			this.myPop.css("left", (this.document.documentElement.scrollWidth - this.myPop.outerWidth()) / 2 + "px");
             this.myPop.show();
 		},
 		
@@ -130,19 +129,12 @@
 			if(this.isModal){
 				this.myModal.remove();
 			}
-            //销毁池中对象
-			delete top.PopLayer.instances[this.id];
 			//计数器退栈
-			top.PopLayer.id--;
 		},
 
 	};
 	
     if (!top.PopLayer) {
-		PopLayer.zIndexCounter = 1000;//z-index计数器
-		PopLayer.id = 0;//层对象计数
-		PopLayer.instances = {};//层对象池
-		
 		top.PopLayer = PopLayer;
 	}
   
@@ -193,29 +185,27 @@ function InitThis() {
         mousePressed = false;
     });
 
-
     // Draw something when a touch start is detected
-    $('#myCanvas').on("touchstart", function(e){
+    canvas.addEventListener('touchstart', function(e){
+        // console.log(e.touches[0]);
         e.preventDefault();
         touched = true;
         Draw(e.touches[0].pageX - $(this).offset().left, e.touches[0].pageY -  $(this).offset().top, false);
-        // console.log(e.touches[0].pageX);
-        // console.log($(this).offset().left);
-        // console.log(e.touches[0].clientX);
-        // console.log(e.touches[0].target.offsetLeft);
-    });
 
-    $('#myCanvas').on("touchmove", function(e){
+    },false);
+
+    canvas.addEventListener('touchmove', function(e){
         if (touched) {
             e.preventDefault();
             Draw(e.touches[0].pageX - $(this).offset().left, e.touches[0].pageY - $(this).offset().top, true);
         }
-    });
+    },true);
 
-    $('#myCanvas').on("touchend", function(e){
+    canvas.addEventListener('touchend', function(e){
         touched = false;
         e.preventDefault();
-    });
+    },false);
+
 
 }
 
@@ -359,6 +349,7 @@ function twogrp() {
     $('.twogrp').attr("style","display:inline");
     $('.threegrp').attr("style","display:none");
     $('.fourgrp').attr("style","display:none");
+    teamed =true;
 }
 
 function threegrp() {
@@ -366,6 +357,7 @@ function threegrp() {
     $('.threegrp').attr("style","display:inline");
     $('.twogrp').attr("style","display:none");
     $('.fourgrp').attr("style","display:none");
+    teamed =true;
 }
 
 function fourgrp() {
@@ -373,6 +365,7 @@ function fourgrp() {
     $('.fourgrp').attr("style","display:inline");
     $('.twogrp').attr("style","display:none");
     $('.threegrp').attr("style","display:none");
+    teamed =true;
 }
 
 
@@ -544,7 +537,7 @@ $(document).delegate('#plus', 'click', function(event) {
             <br><canvas id='myCanvas' width='300px' height='175px' style='display:none'></canvas>\
             <button id='clr' onclick='erase()'><img id='eraser' src='./media/eraser.svg' width='25px' style='display:none'></button> \
             <div align='center'><button class='create' id='create' style='display:none' onclick='save()'> &nbsp;&nbsp; Create &nbsp;&nbsp; </button></div>"
-        })
+        });
 
 })
 })
@@ -561,7 +554,7 @@ $(document).delegate('#team', 'click', function(event) {
         <img src='./media/g2.png'  class='team' width='600px'  onclick='threegrp()'> \
         <img src='./media/g3.png'  class='team' width='600px'  onclick='fourgrp()'>"
         });
-        teamed =true;
+        
 
         $('#noteam').click(function(){
             $('.groups').attr("style","display:none");
@@ -649,17 +642,3 @@ $(document).delegate('.nostar', 'click', function(){
         }
     })
 })
-
-
-
-// <canvas id='can' width='400' height='100' style='display:none'></canvas>
-// <iframe id='can' src='draw.html' frameborder='0' scrolling='no' width='400' style='display:none'></iframe>\
-// <image id='btn' src='media/plus.svg' width='30px' onclick='plus()'>\
-
-
-
-
-
-
-//    <canvas id= 'myCanvas' width='500' height='200' style='border:2px solid black'></canvas><br/><br/>\
-// <button onclick='javascript:clearArea();return false;'>Clear Area</button>\
