@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="564px" height="255px" viewBox="0 0 564 255" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>3 groups</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="3-groups">
+            <polygon id="Color-Copy-3" fill="#C1CACD" points="1.42108547e-14 -2.84217094e-14 172.846811 -2.84217094e-14 172.846811 254.337015 1.42108547e-14 254.337015"></polygon>
+            <polygon id="Color-Copy-4" fill="#C1CACD" points="195.408867 -2.84217094e-14 368.255678 -2.84217094e-14 368.255678 254.337015 195.408867 254.337015"></polygon>
+            <polygon id="Color-Copy-5" fill="#C1CACD" points="390.817734 -2.84217094e-14 563.664545 -2.84217094e-14 563.664545 254.337015 390.817734 254.337015"></polygon>
+            <text id="A-Copy" font-family="EFCircular-Bold, EF Circular" font-size="30" font-weight="bold" fill="#4A4A4A">
+                <tspan x="75.776133" y="136.709091">A</tspan>
+            </text>
+            <text id="B-Copy" font-family="EFCircular-Bold, EF Circular" font-size="30" font-weight="bold" fill="#4A4A4A">
+                <tspan x="272.7" y="136.709091">B</tspan>
+            </text>
+            <text id="C" font-family="EFCircular-Bold, EF Circular" font-size="30" font-weight="bold" fill="#4A4A4A">
+                <tspan x="466.068867" y="136.709091">C</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

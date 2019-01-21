@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="59px" height="59px" viewBox="0 0 59 59" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_loupe</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M34.5,5.75 C18.63,5.75 5.75,18.63 5.75,34.5 C5.75,50.37 18.63,63.25 34.5,63.25 C50.37,63.25 63.25,50.37 63.25,34.5 C63.25,18.63 50.37,5.75 34.5,5.75 L34.5,5.75 Z M34.5,14.375 C39.2725,14.375 43.125,18.2275 43.125,23 C43.125,27.7725 39.2725,31.625 34.5,31.625 C29.7275,31.625 25.875,27.7725 25.875,23 C25.875,18.2275 29.7275,14.375 34.5,14.375 L34.5,14.375 Z M34.5,55.2 C27.3125,55.2 20.95875,51.52 17.25,45.9425 C17.33625,40.22125 28.75,37.0875 34.5,37.0875 C40.22125,37.0875 51.66375,40.22125 51.75,45.9425 C48.04125,51.52 41.6875,55.2 34.5,55.2 L34.5,55.2 Z" id="path-1"></path>
+        <rect id="path-3" x="0" y="0" width="144" height="144"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_account_circle" transform="translate(-5.000000, -5.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="Mask"></g>
+            <g id="Colors/Black" mask="url(#mask-2)">
+                <g transform="translate(-37.375000, -37.375000)">
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <use id="Black" stroke="none" fill="#000000" fill-rule="evenodd" xlink:href="#path-3"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

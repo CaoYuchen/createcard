@@ -7,42 +7,43 @@ button {
     overflow: hidden;
 }
 
-input{
+input {
     outline: none;
     overflow: hidden;
 }
-iframe{
+
+iframe {
     display: block;
     overflow: hidden;
 }
 
 
-body{
+body {
     font-family: "Source Sans Pro", "Arial", sans-serif;
 }
 
 
 
 
-#main{
+#main {
     width: 85%;
     margin: 5% auto;
 }
 
-.title{
+.title {
     font-size: 50px;
-    margin:0 20px 0 0;
+    margin: 0 20px 0 0;
     display: inline;
 }
 
-.stitle{
+.stitle {
     display: inline-block;
     font-size: 25px;
     margin: 20px 0 10px 0;
     font-weight: bold;
 }
 
-.score{
+.score {
     display: block;
     font-size: 18px;
     margin: 20px 0 10px 0;
@@ -51,9 +52,10 @@ body{
 }
 
 
-.figure{
-    display: inline-block;
+.figure {
+    display: inline;
 }
+
 .figure:hover {
     cursor: pointer;
 }
@@ -94,61 +96,94 @@ body{
 }
 
 .myPop-content {
-/*    min-width: 400px;
+    /*    min-width: 400px;
     min-height: 200px;*/
     border-radius: 0 0 10px 10px;
-    margin: 0;
     background: #FFFFFF;
-    padding: 0;
     display: inline-block;
     text-align: center;
 
 }
 
+.myPop-content p{
+    margin:0;
+}
+
 
 #myCanvas {
-   /*position: absolute;*/
-  /* text-align: center;*/
-    /*padding: 5px 0 0 30px;*/
+    /*position: absolute;*/
+    
+    margin: 0 0 0 25px;
     /*background-image:url(../media/lined-paper.svg);*/
- /*   display: line-block;*/
+    /*   display: line-block;*/
 }
 
 /*.members {
     display: inline-block;
 }*/
 
-div.member-layer{
+div.member-layer {
     display: inline-block;
 }
 
 .member {
-    margin:20px 10px;
+    margin: 20px 10px;
 }
 
 .gmember {
-    margin:20px 10px;
+    margin: 20px 10px;
 }
 
 .btn {
     position: relative;
     /*display: inline-block;*/
-    margin:0 15px 0;
+    margin: 0 15px 0;
+
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1);
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1);
+    transition: all 200ms ease-in;
+    transform: scale(1);
+}
+
+.btn:hover {
+    z-index: 2;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.5);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.5);
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.5);
+    transition: all 200ms ease-in;
+    transform: scale(1.5);
 }
 
 .groupbtn {
-    display:inline-block;
-    float:right;
-    margin:20px 0 10px 20px;
+    display: inline-block;
+    float: right;
+    margin: 20px 0 10px 20px;
+
+    -webkit-transition: margin 0.5s ease-out;
+    -moz-transition: margin 0.5s ease-out;
+    -o-transition: margin 0.5s ease-out;
+}
+
+.groupbtn:hover {
+    cursor: pointer;
+    margin-top: 10px;
 }
 
 #clr {
-    position: absolute;
-    vertical-align:top;
-    right:5px;
+    /*position: absolute;*/
+    float:right;
+    vertical-align: top;
+   /* right: 5px;*/
     /*display: inline-block;*/
-    font-size:20px;
-    z-index: 1;
+    font-size: 20px;
+    z-index: 10;
 }
 
 
@@ -156,7 +191,7 @@ div.member-layer{
     color: #fff !important;
     background: #3fc3f4;
     padding: 10px 25px 10px;
-    margin:10px 0 10px 0;
+    margin: 10px 0 10px 0;
     font-weight: bold;
     border-radius: 50px;
     display: inline-block;
@@ -164,121 +199,142 @@ div.member-layer{
 }
 
 .create:hover {
-    cursor:pointer;
+    cursor: pointer;
     text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
-    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
     transition: all 0.4s ease 0s;
 }
 
-.delete{
+.delete {
     position: absolute;
-    vertical-align:top;
+    vertical-align: top;
     margin-top: 20px;
     margin-left: -35px;
-/*    right:5px;*/
+    /*    right:5px;*/
     /*display: inline-block;*/
     z-index: 99;
     display: none;
 }
 
-.groupplus{
+.gdelete {
     position: absolute;
-    vertical-align:top;
+    vertical-align: top;
     margin-top: 20px;
     margin-left: -35px;
-/*    right:5px;*/
+    /*    right:5px;*/
     /*display: inline-block;*/
     z-index: 99;
     display: none;
 }
 
-.groups{
-    display:none;
+.groupplus {
+    position: absolute;
+    vertical-align: top;
+    margin-top: 20px;
+    margin-left: -35px;
+    /*    right:5px;*/
+    /*display: inline-block;*/
+    z-index: 99;
+    display: none;
 }
 
-.twogrp .g1{
+.groups {
+    display: none;
+}
+
+.twogrp .g1 {
     width: 45%;
-    float:left;
+    float: left;
 }
 
 
-.twogrp .g2{
+.twogrp .g2 {
     width: 45%;
-    float:right; 
+    float: right;
 }
 
-.threegrp .g1{
+.threegrp .g1 {
     width: 30%;
     float: left;
 }
 
 
-.threegrp .g2{
+.threegrp .g2 {
     width: 30%;
-    display:inline-block;
+    display: inline-block;
     margin-left: 5%;
 }
 
-.threegrp .g3{
+.threegrp .g3 {
     width: 30%;
-    float:right;
+    float: right;
 }
 
 
-.fourgrp .g1{
+.fourgrp .g1 {
     width: 20%;
-    float:left;
+    float: left;
 }
 
-.fourgrp .g2{
+.fourgrp .g2 {
     width: 20%;
-    display:inline-block;
+    display: inline-block;
     margin-left: 6.6%
 }
 
 
-.fourgrp .g3{
+.fourgrp .g3 {
     width: 20%;
-    display:inline-block;
+    display: inline-block;
     margin-left: 6.6%
 }
 
-.fourgrp .g4{
+.fourgrp .g4 {
     width: 20%;
-    float:right;
+    float: right;
 }
 
 .team {
     display: block;
 }
 
-.twogrp{
-    display:none;
+.twogrp {
+    display: none;
 }
 
-.threegrp{
-    display:none;
+.threegrp {
+    display: none;
 }
 
-.fourgrp{
-    display:none;
+.fourgrp {
+    display: none;
 }
 
-.star{
-    display:inline-block;
-    float:right;
-    margin:20px 0 10px 0;
+.star {
+    display: inline-block;
+    float: right;
+    margin: 20px 0 10px 0;
+
+    transition: all 500ms ease-in-out;
 }
 
-.nostar{
-    display:inline-block;
-    float:right;
-    margin:20px 0 10px 0;
+.star:hover {
+    -ms-transform: rotate(360deg);
+    /* IE 9 */
+    -webkit-transform: rotate(360deg);
+    /* Chrome, Safari, Opera */
+    transform: rotate(360deg);
 }
 
-.team{
-    margin:10px 0 0;
+.nostar {
+    display: inline-block;
+    float: right;
+    margin: 20px 0 10px 0;
+}
+
+.team {
+    margin: 10px 0 0;
 }
 
 .scorep {
@@ -287,10 +343,10 @@ div.member-layer{
 }
 
 .scoreg {
-    display:inline-block;
+    display: inline-block;
     margin: 0 5px 0;
 }
 
-.score span{
-    display:inline-block;
+.score span {
+    display: inline-block;
 }

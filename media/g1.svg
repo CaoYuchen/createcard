@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="369px" height="255px" viewBox="0 0 369 255" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>2 groups</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="2-groups">
+            <polygon id="Color-Copy" fill="#C1CACD" points="1.42108547e-14 -2.84217094e-14 173.038545 -2.84217094e-14 173.038545 254.337015 1.42108547e-14 254.337015"></polygon>
+            <polygon id="Color-Copy-2" fill="#C1CACD" points="195.625628 -2.84217094e-14 368.664173 -2.84217094e-14 368.664173 254.337015 195.625628 254.337015"></polygon>
+            <text id="A" font-family="EFCircular-Bold, EF Circular" font-size="30" font-weight="bold" fill="#4A4A4A">
+                <tspan x="75.8721859" y="136.709091">A</tspan>
+            </text>
+            <text id="B" font-family="EFCircular-Bold, EF Circular" font-size="30" font-weight="bold" fill="#4A4A4A">
+                <tspan x="273.012814" y="136.709091">B</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

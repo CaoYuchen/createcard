@@ -238,13 +238,13 @@ function save() {
         var dataURL = document.getElementById('myCanvas').toDataURL();
         var merge = document.getElementById('can').getContext("2d");
         //background of handwriting
-     	var bkg = new Image();
+     	// var bkg = new Image();
      	// bkg.src = "./media/lined-paper.svg";
      	// bkg.crossOrigin = "anonymous";
      	// gender.crossOrigin = "anonymous";
-        merge.drawImage(gender,0,0);
-        merge.drawImage(bkg,25,360,300,185);
-        merge.drawImage(canvas,25,350);
+        merge.drawImage(gender,5,0);
+        // merge.drawImage(bkg,25,360,300,185);
+        merge.drawImage(canvas,0,190,350,150);
         ++number;
         document.getElementById("m"+number).src = document.getElementById('can').toDataURL();
         document.getElementById("m"+number).style.display = "inline-block";
@@ -323,25 +323,33 @@ function hideplus(){
     }     
 
 function boy() {
-    document.getElementById("girl").style.display = "none";
-    document.getElementById("boy").width = "350";
-    gender.src = document.getElementById("boy").src;
-    document.getElementById("myCanvas").style.display = "inline-block";
-    document.getElementById("eraser").style.display = "inline-block";
-    document.getElementById("create").style.display = "block";
-    // document.getElementById("can").onload=function(e){}
-    InitThis();
+    if(imageflag){
+        document.getElementById("girl").style.display = "none";
+        document.getElementById("boy").width = "350";
+        gender.src = document.getElementById("boy").src;
+        document.getElementById("myCanvas").style.display = "inline";
+        document.getElementById("eraser").style.display = "inline-block";
+        document.getElementById("create").style.display = "block";
+        // document.getElementById("can").onload=function(e){}
+        InitThis();
+        imageflag = false;
+    }
+
     // initCanvas();
 }
 
 function girl() {
-    document.getElementById("boy").style.display = "none";
-    document.getElementById("girl").width = "350";
-    gender.src = document.getElementById("girl").src;
-    document.getElementById("myCanvas").style.display = "inline-block";
-    document.getElementById("eraser").style.display = "inline-block";
-    document.getElementById("create").style.display = "block";
-    InitThis();
+    if(imageflag){
+        document.getElementById("boy").style.display = "none";
+        document.getElementById("girl").width = "350";
+        gender.src = document.getElementById("girl").src;
+        document.getElementById("myCanvas").style.display = "inline-block";
+        document.getElementById("eraser").style.display = "inline-block";
+        document.getElementById("create").style.display = "block";
+        InitThis();
+        imageflag = false;
+    }
+
 }
 
 function twogrp() {
@@ -369,24 +377,6 @@ function fourgrp() {
 }
 
 
-var deleteflag = false;
-$(function() {
-$(document).delegate('#minus', 'click', function(event) {
-    if(number > 0 ){
-        if(!deleteflag){
-            showdelete();
-            deleteflag = true;
-        }
-        else {
-            hidedelete();
-            deleteflag = false;
-        }
-    }     
-})
-})
-
-
-
 var plusflag = false;
 var classname = null;
 var subclass = null;
@@ -403,9 +393,17 @@ $(document).delegate('#grpplus', 'click', function(event) {
             hideplus();
             plusflag = false;
         }
-    }     
+    }
+
+    $('body').on('click', function(e){
+        if(plusflag){
+            hideplus();
+            plusflag = false;
+        }
+    })     
 })
 })
+
 
 var groupdeleteflag = false;
 $(function() {
@@ -420,72 +418,101 @@ $(document).delegate('#grpminus', 'click', function(event) {
             groupdeleteflag = false;
         }
     }
-
+    $('body').on('click', function(e){
+        if(groupdeleteflag){
+            hidegroupdelete();
+            groupdeleteflag = false;
+        }
+    })
 })
 })
 
 
 $(function() {
-$(document).delegate('.delete', 'click', function(event) {
-    if(groupdeleteflag){
-        var index = $(this).attr("id");
-        // console.log(index);
-        $("#" + index).remove();
-        index = index.replace("gd","g");
-        $("#" + index).remove();
-        index = parseInt(index.replace("g",""));
-        // console.log(index);
-        used[index-1]=0;
+$(document).delegate('.gdelete', 'click', function(event) {
+    var index = $(this).attr("id");
+    // console.log(index);
+    $("#" + index).remove();
+    index = index.replace("gd","g");
+    $("#" + index).remove();
+    index = parseInt(index.replace("g",""));
+    // console.log(index);
+    used[index-1]=0;
 
-        groupdeleteflag=false;
-        hidegroupdelete();
+    groupdeleteflag=false;
+    hidegroupdelete();
+})
+})
 
-    }
 
-    else{
-        var index = $(this).attr("id");
-        // console.log(index[1]);
-        document.getElementById("d"+number).style.display = "none";
-        document.getElementById("m"+number).style.display = "none";
-        document.getElementById("p"+number).style.display = "none";
-        if(index.length == 2)
-            ind = index[1];
-        else
-            ind = index[1]+index[2];    
-        k = Number(ind);
-
-        //hide delete button
-        deleteflag=false;
-        hidedelete();
-
-        for(k;k<number;k++)
-        {   
-            var tmp1 = document.getElementById("m"+k).src;
-            document.getElementById("m"+k).src=document.getElementById("m"+(k+1)).src;
-            document.getElementById("m"+(k+1)).src=tmp1;
-
-            var tmp2 = document.getElementById("d"+k).src;
-            document.getElementById("d"+k).src=document.getElementById("d"+(k+1)).src;
-            document.getElementById("d"+(k+1)).src=tmp2;
-
-            var tmp3 = document.getElementById("p"+k).src;
-            document.getElementById("p"+k).src=document.getElementById("p"+(k+1)).src;
-            document.getElementById("p"+(k+1)).src=tmp3;
-            var n = used[k-1];
-            used[k-1]=used[k];
-            used[k]=n;
+var deleteflag = false;
+$(function() {
+$(document).delegate('#minus', 'click', function(event) {
+    if(number > 0 ){
+        if(!deleteflag){
+            showdelete();
+            deleteflag = true;
         }
-
-        // console.log(k);
-
-        --number;
-        if(number < 20)
-        {
-            $('#plus').attr("disabled",false);
+        else {
+            hidedelete();
+            deleteflag = false;
         }
     }
     
+    $('body').on('click', function(e){
+        if(deleteflag){
+            hidedelete();
+            deleteflag = false;
+        }
+    })     
+})
+})
 
+
+
+$(function() {
+$(document).delegate('.delete', 'click', function(event) {
+
+    var index = $(this).attr("id");
+    // console.log(index[1]);
+    document.getElementById("d"+number).style.display = "none";
+    document.getElementById("m"+number).style.display = "none";
+    document.getElementById("p"+number).style.display = "none";
+    if(index.length == 2)
+        ind = index[1];
+    else
+        ind = index[1]+index[2];    
+    k = Number(ind);
+
+    //hide delete button
+    deleteflag=false;
+    hidedelete();
+
+    for(k;k<number;k++)
+    {   
+        var tmp1 = document.getElementById("m"+k).src;
+        document.getElementById("m"+k).src=document.getElementById("m"+(k+1)).src;
+        document.getElementById("m"+(k+1)).src=tmp1;
+
+        var tmp2 = document.getElementById("d"+k).src;
+        document.getElementById("d"+k).src=document.getElementById("d"+(k+1)).src;
+        document.getElementById("d"+(k+1)).src=tmp2;
+
+        var tmp3 = document.getElementById("p"+k).src;
+        document.getElementById("p"+k).src=document.getElementById("p"+(k+1)).src;
+        document.getElementById("p"+(k+1)).src=tmp3;
+        var n = used[k-1];
+        used[k-1]=used[k];
+        used[k]=n;
+    }
+
+    // console.log(k);
+
+    --number;
+    if(number < 20)
+    {
+        $('#plus').attr("disabled",false);
+    }
 
 })
 })
@@ -512,6 +539,7 @@ $(document).delegate('.groupplus', 'click', function(event) {
     index = $(this).siblings('.delete').attr("id");
     content = $("#"+index).clone();
     content.attr("id","g"+index);
+    content.attr("class","gdelete");
     $('.' + classname + ' > .' + subclass + ' > .groupmember').append(content);
 
     plusflag = false;
@@ -526,15 +554,16 @@ $(document).delegate('.groupplus', 'click', function(event) {
 
 
 
-
+var imageflag;
 $(function() {
 $(document).delegate('#plus', 'click', function(event) {
+        imageflag = true;
         new top.PopLayer({
             "title": "",
             "content":
-            "<img src='./media/boy.svg' id='boy' class='figure' width='200px'  onclick='boy()'> \
-            <img src='./media/girl.svg' id='girl' class='figure' width='200px'  onclick='girl()'> \
-            <br><canvas id='myCanvas' width='300px' height='175px' style='display:none'></canvas>\
+            "<p><img src='./media/boy.svg' id='boy' class='figure' width='200px'  onclick='boy()'> \
+            <img src='./media/girl.svg' id='girl' class='figure' width='200px'  onclick='girl()'></p> \
+            <canvas id='myCanvas' width='350px' height='auto' style='display:none'></canvas>\
             <button id='clr' onclick='erase()'><img id='eraser' src='./media/eraser.svg' width='25px' style='display:none'></button> \
             <div align='center'><button class='create' id='create' style='display:none' onclick='save()'> &nbsp;&nbsp; Create &nbsp;&nbsp; </button></div>"
         });
@@ -550,9 +579,9 @@ $(document).delegate('#team', 'click', function(event) {
         new top.PopLayer({
         "title": "",
         "content":
-        "<img src='./media/g1.png' class='team' width='600px'  onclick='twogrp()'> \
-        <img src='./media/g2.png'  class='team' width='600px'  onclick='threegrp()'> \
-        <img src='./media/g3.png'  class='team' width='600px'  onclick='fourgrp()'>"
+        "<img src='./media/g1.png' class='team' width='400px'  onclick='twogrp()'> \
+        <img src='./media/g2.png'  class='team' width='400px'  onclick='threegrp()'> \
+        <img src='./media/g3.png'  class='team' width='400px'  onclick='fourgrp()'>"
         });
         
 
@@ -626,7 +655,7 @@ $(document).delegate('.star', 'click', function(event) {
 })
 
 var stardeleteflag = true;
-$(document).delegate('.nostar', 'click', function(){
+$(document).delegate('#deletestar', 'click', function(){
 
     stardeleteflag =  false;
     $('.scorep , .scoreg').on('click',function(){
