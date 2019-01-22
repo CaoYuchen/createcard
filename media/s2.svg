@@ -1,26 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="57px" height="54px" viewBox="0 0 57 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
-    <title>ic_star orange</title>
-    <desc>Created with Sketch.</desc>
-    <defs>
-        <polygon id="path-1" points="33.5 48.2120833 50.7525 58.625 46.1741667 38.9995833 61.4166667 25.795 41.3445833 24.0920833 33.5 5.58333333 25.6554167 24.0920833 5.58333333 25.795 20.8258333 38.9995833 16.2475 58.625"></polygon>
-        <rect id="path-3" x="0" y="0" width="140" height="140"></rect>
-    </defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="ic_star" transform="translate(-5.000000, -5.000000)">
-            <mask id="mask-2" fill="white">
-                <use xlink:href="#path-1"></use>
-            </mask>
-            <g id="Mask"></g>
-            <g id="Colors/Black-Copy-2" mask="url(#mask-2)">
-                <g transform="translate(-36.291667, -36.291667)">
-                    <mask id="mask-4" fill="white">
-                        <use xlink:href="#path-3"></use>
-                    </mask>
-                    <use id="Black" stroke="none" fill="#FF905F" fill-rule="evenodd" xlink:href="#path-3"></use>
-                </g>
-            </g>
-        </g>
-    </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 57 54" style="enable-background:new 0 0 57 54;" xml:space="preserve">
+<style type="text/css">
+	.st0{filter:url(#Adobe_OpacityMaskFilter);}
+	.st1{fill:#FFFFFF;}
+	.st2{mask:url(#mask-2_1_);}
+	.st3{fill:#9AC83F;}
+</style>
+<title>ic_star orange</title>
+<desc>Created with Sketch.</desc>
+<g id="Page-1">
+	<g id="ic_star" transform="translate(-5.000000, -5.000000)">
+		<g id="Mask">
+		</g>
+		<defs>
+			<filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="-36.3" y="-36.3" width="140" height="140">
+				<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+			</filter>
+		</defs>
+		<mask maskUnits="userSpaceOnUse" x="-36.3" y="-36.3" width="140" height="140" id="mask-2_1_">
+			<g class="st0">
+				<polygon id="path-1_1_" class="st1" points="33.5,48.2 50.8,58.6 46.2,39 61.4,25.8 41.3,24.1 33.5,5.6 25.7,24.1 5.6,25.8 
+					20.8,39 16.2,58.6 				"/>
+			</g>
+		</mask>
+		<g id="Colors_x2F_Black-Copy-2" class="st2">
+			<g transform="translate(-36.291667, -36.291667)">
+				<g id="Black">
+					<rect id="path-3_1_" x="0" y="0" class="st3" width="140" height="140"/>
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
 </svg>

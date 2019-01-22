@@ -1,26 +1,83 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="759px" height="255px" viewBox="0 0 759 255" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
-    <title>4 groups</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="4-groups">
-            <polygon id="Color-Copy-6" fill="#C1CACD" points="1.42108547e-14 -2.84217094e-14 172.75375 -2.84217094e-14 172.75375 254.337015 1.42108547e-14 254.337015"></polygon>
-            <polygon id="Color-Copy-7" fill="#C1CACD" points="195.303659 -2.84217094e-14 368.057408 -2.84217094e-14 368.057408 254.337015 195.303659 254.337015"></polygon>
-            <polygon id="Color-Copy-8" fill="#C1CACD" points="390.607317 -2.84217094e-14 563.361067 -2.84217094e-14 563.361067 254.337015 390.607317 254.337015"></polygon>
-            <polygon id="Color-Copy-9" fill="#C1CACD" points="585.910976 -2.84217094e-14 758.664725 -2.84217094e-14 758.664725 254.337015 585.910976 254.337015"></polygon>
-            <text id="A-Copy-2" font-family="EFCircular-Bold, EF Circular" font-size="30" font-weight="bold" fill="#4A4A4A">
-                <tspan x="75.7295122" y="136.709091">A</tspan>
-            </text>
-            <text id="B-Copy-2" font-family="EFCircular-Bold, EF Circular" font-size="30" font-weight="bold" fill="#4A4A4A">
-                <tspan x="272.548171" y="136.709091">B</tspan>
-            </text>
-            <text id="C-Copy" font-family="EFCircular-Bold, EF Circular" font-size="30" font-weight="bold" fill="#4A4A4A">
-                <tspan x="465.811829" y="136.709091">C</tspan>
-            </text>
-            <text id="D" font-family="EFCircular-Bold, EF Circular" font-size="30" font-weight="bold" fill="#4A4A4A">
-                <tspan x="661.505488" y="136.709091">D</tspan>
-            </text>
-        </g>
-    </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 379 154.3" style="enable-background:new 0 0 379 154.3;" xml:space="preserve">
+<style type="text/css">
+	.st0{filter:url(#filter-6);}
+	.st1{fill:#FFFFFF;}
+	.st2{filter:url(#filter-2);}
+	.st3{filter:url(#filter-4);}
+	.st4{filter:url(#filter-8);}
+	.st5{fill:#FF905F;}
+	.st6{font-family:'Arial-BoldMT';}
+	.st7{font-size:50px;}
+	.st8{fill:#50E3C2;}
+	.st9{fill:#9013FE;}
+	.st10{fill:#F8E71C;}
+</style>
+<filter  filterUnits="objectBoundingBox" height="107.5%" id="filter-8" width="122.6%" x="-10.1%" y="-2.2%">
+	<feOffset  dx="1" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+	<feGaussianBlur  in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2.5"></feGaussianBlur>
+	<feColorMatrix  in="shadowBlurOuter1" type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.117498868 0">
+		</feColorMatrix>
+</filter>
+<filter  filterUnits="objectBoundingBox" height="107.5%" id="filter-6" width="122.6%" x="-10.1%" y="-2.2%">
+	<feOffset  dx="1" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+	<feGaussianBlur  in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2.5"></feGaussianBlur>
+	<feColorMatrix  in="shadowBlurOuter1" type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.117498868 0">
+		</feColorMatrix>
+</filter>
+<filter  filterUnits="objectBoundingBox" height="107.5%" id="filter-4" width="122.6%" x="-10.1%" y="-2.2%">
+	<feOffset  dx="1" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+	<feGaussianBlur  in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2.5"></feGaussianBlur>
+	<feColorMatrix  in="shadowBlurOuter1" type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.117498868 0">
+		</feColorMatrix>
+</filter>
+<filter  filterUnits="objectBoundingBox" height="107.5%" id="filter-2" width="122.6%" x="-10.1%" y="-2.2%">
+	<feOffset  dx="1" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+	<feGaussianBlur  in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2.5"></feGaussianBlur>
+	<feColorMatrix  in="shadowBlurOuter1" type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.117498868 0">
+		</feColorMatrix>
+</filter>
+<g id="Color-Copy-15_2_">
+	<g class="st0">
+		<polygon id="path-5_5_" points="4,1 88,1 88,151 4,151 		"/>
+	</g>
+	<polygon id="path-5_4_" class="st1" points="4,1 88,1 88,151 4,151 	"/>
+</g>
+<g id="Color-Copy-15_1_">
+	<g class="st0">
+		<polygon id="path-5_5_" points="194,0 278,0 278,150 194,150 		"/>
+	</g>
+	<polygon id="path-5_2_" class="st1" points="194,0 278,0 278,150 194,150 	"/>
+</g>
+<polygon id="path-5_3_" class="st1" points="4,0 88,0 88,150 4,150 "/>
+<title>Group 8 Copy</title>
+<desc>Created with Sketch.</desc>
+<g class="st2">
+</g>
+<g class="st3">
+</g>
+<g id="Color-Copy-15">
+	<g class="st0">
+		<polygon id="path-5_5_" points="99,1 183,1 183,151 99,151 		"/>
+	</g>
+	<polygon id="path-5_1_" class="st1" points="99,1 183,1 183,151 99,151 	"/>
+</g>
+<g id="Color-Copy-16">
+	<g class="st4">
+		<polygon id="path-7_2_" points="289,1 373,1 373,151 289,151 		"/>
+	</g>
+	<g>
+		<polygon id="path-7_1_" class="st1" points="289,1 373,1 373,151 289,151 		"/>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 125.5 102.0361)" class="st5 st6 st7">B</text>
+<text transform="matrix(1 0 0 1 217.1 102.0361)" class="st8 st6 st7">C</text>
+<text transform="matrix(1 0 0 1 312.75 102.0361)" class="st9 st6 st7">D</text>
+<text transform="matrix(1 0 0 1 27.975 102.0361)" class="st10 st6 st7">A</text>
+<rect id="Rectangle-Copy-11" x="4" y="1" class="st10" width="84" height="11"/>
+<rect id="Rectangle-Copy-12" x="99" y="1" class="st5" width="84" height="11"/>
+<rect id="Rectangle-Copy-13" x="194" y="1" class="st8" width="84" height="11"/>
+<rect id="Rectangle-Copy-14" x="289" y="1" class="st9" width="84" height="11"/>
 </svg>

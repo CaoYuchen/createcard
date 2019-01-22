@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Create</title>
+    <link type="text/css" href="../css/pop.css" rel='stylesheet'>
+    <script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../js/pop.js" ></script>
+<!--     <script type="text/javascript" src="js/draw.js"></script>
+    <link type="text/css" href="css/draw.css" rel='stylesheet'> -->
+</head>
+
+<body>
+    <div id="main">
+        <div class="title"><span>Students</span></div>
+        <button class="btn" id='plus'><image src='../media/plus.svg' height='30px'></image></button>
+        <button class="btn" id='minus'><image src='../media/minus.svg' height='30px'></image></button>
+        <button class="btn" id='team'><image src='../media/team.svg' height='30px'></image></button>
+        <button class="btn" id='noteam'><image src='../media/noteam.svg' height='30px'></image></button>
+        <button class="star" id="s1"><img src="../media/s1.svg" width="30px"></button>
+        <button class="star" id="s2"><img src="../media/s2.svg" width="30px"></button>
+        <button class="star" id="s3"><img src="../media/s3.svg" width="30px"></button>
+        <button class="star" id="s4"><img src="../media/s4.svg" width="30px"></button>
+        <button class="star" id="s5"><img src="../media/s5.svg" width="30px"></button>
+        <button class="nostar" id="deletestar"><img src="../media/cancel.svg" width="30px"></button>
+        <hr>
+        <canvas id="can" width="350px" height="350px" style="display:none"></canvas>
+        <img id="bkgimg" src="../media/lined-paper.svg" style="display: none">
+        <div class="members">
+            <div class="member-layer"><img class="member" id="m1" width="120px"><button class="delete" id="d1"><img src="../media/redminus.svg" width="20px"></button><button class="groupplus" id="p1"><img src="../media/greenplus.svg" width="20px"></button></div>
+            <div class="member-layer"><img class="member" id="m2" width="120px"><button class="delete" id="d2"><img src="../media/redminus.svg" width="20px"></button><button class="groupplus" id="p2"><img src="../media/greenplus.svg" width="20px"></button></div>
+            <div class="member-layer"><img class="member" id="m3" width="120px"><button class="delete" id="d3"><img src="../media/redminus.svg" width="20px"></button><button class="groupplus" id="p3"><img src="../media/greenplus.svg" width="20px"></button></div>
+            <div class="member-layer"><img class="member" id="m4" width="120px"><button class="delete" id="d4"><img src="../media/redminus.svg" width="20px"></button><button class="groupplus" id="p4"><img src="../media/greenplus.svg" width="20px"></button></div>
+            <div class="member-layer"><img class="member" id="m5" width="120px"><button class="delete" id="d5"><img src="../media/redminus.svg" width="20px"></button><button class="groupplus" id="p5"><img src="../media/greenplus.svg" width="20px"></button></div>
+            <div class="member-layer"><img class="member" id="m6" width="120px"><button class="delete" id="d6"><img src="../media/redminus.svg" width="20px"></button><button class="groupplus" id="p6"><img src="../media/greenplus.svg" width="20px"></button></div>
+            <div class="member-layer"><img class="member" id="m7" width="120px"><button class="delete" id="d7"><img src="../media/redminus.svg" width="20px"></button><button class="groupplus" id="p7"><img src="../media/greenplus.svg" width="20px"></button></div>
+            <div class="member-layer"><img class="member" id="m8" width="120px"><button class="delete" id="d8"><img src="../media/redminus.svg" width="20px"></button><button class="groupplus" id="p8"><img src="../media/greenplus.svg" width="20px"></button></div>
+            <div class="member-layer"><img class="member" id="m9" width="120px"><button class="delete" id="d9"><img src="../media/redminus.svg" width="20px"></button><button class="groupplus" id="p9"><img src="../media/greenplus.svg" width="20px"></button></div>
+            <div class="member-layer"><img class="member" id="m10" width="120px"><button class="delete" id="d10"><img src="../media/redminus.svg" width="20px"></button><button class="groupplus" id="p10"><img src="../media/greenplus.svg" width="20px"></button></div>
+            <div class="member-layer"><img class="member" id="m11" width="120px"><button class="delete" id="d11"><img src="../media/redminus.svg" width="20px"></button><button class="groupplus" id="p11"><img src="../media/greenplus.svg" width="20px"></button></div>
+            <div class="member-layer"><img class="member" id="m12" width="120px"><button class="delete" id="d12"><img src="../media/redminus.svg" width="20px"></button><button class="groupplus" id="p12"><img src="../media/greenplus.svg" width="20px"></button></div>
+            <div class="member-layer"><img class="member" id="m13" width="120px"><button class="delete" id="d13"><img src="../media/redminus.svg" width="20px"></button><button class="groupplus" id="p13"><img src="../media/greenplus.svg" width="20px"></button></div>
+            <div class="member-layer"><img class="member" id="m14" width="120px"><button class="delete" id="d14"><img src="../media/redminus.svg" width="20px"></button><button class="groupplus" id="p14"><img src="../media/greenplus.svg" width="20px"></button></div>
+            <div class="member-layer"><img class="member" id="m15" width="120px"><button class="delete" id="d15"><img src="../media/redminus.svg" width="20px"></button><button class="groupplus" id="p15"><img src="../media/greenplus.svg" width="20px"></button></div>
+            <div class="member-layer"><img class="member" id="m16" width="120px"><button class="delete" id="d16"><img src="../media/redminus.svg" width="20px"></button><button class="groupplus" id="p16"><img src="../media/greenplus.svg" width="20px"></button></div>
+            <div class="member-layer"><img class="member" id="m17" width="120px"><button class="delete" id="d17"><img src="../media/redminus.svg" width="20px"></button><button class="groupplus" id="p17"><img src="../media/greenplus.svg" width="20px"></button></div>
+            <div class="member-layer"><img class="member" id="m18" width="120px"><button class="delete" id="d18"><img src="../media/redminus.svg" width="20px"></button><button class="groupplus" id="p18"><img src="../media/greenplus.svg" width="20px"></button></div>
+            <div class="member-layer"><img class="member" id="m19" width="120px"><button class="delete" id="d19"><img src="../media/redminus.svg" width="20px"></button><button class="groupplus" id="p19"><img src="../media/greenplus.svg" width="20px"></button></div>
+            <div class="member-layer"><img class="member" id="m20" width="120px"><button class="delete" id="d20"><img src="../media/redminus.svg" width="20px"></button><button class="groupplus" id="p20"><img src="../media/greenplus.svg" width="20px"></button></div>
+        </div>
+        <div class="groups">
+            <div class="title"><span>Groups</span></div><button class="groupbtn" id='grpminus'><image src='../media/groupminus.svg' height='30px'></image></button>
+            <hr>
+            <div class="twogrp">
+                <div class="g1"><div class="stitle"><span>Group A</span></div><button class="groupbtn" id='grpplus'><image src='../media/groupplus.svg' height='30px'></image></button>
+                <hr><div class="groupmember"></div><div class="score"><span>Scores:</span></div>
+                </div>
+                <div class="g2"><div class="stitle"><span>Group B</span></div><button class="groupbtn" id='grpplus'><image src='../media/groupplus.svg' height='30px'></image></button>
+                <hr><div class="groupmember"></div><div class="score"><span>Scores:</span></div>
+                </div>
+            </div>
+            <div class="threegrp">
+                <div class="g1"><div class="stitle"><span>Group A</span></div><button class="groupbtn" id='grpplus'><image src='../media/groupplus.svg' height='30px'></image></button>
+                <hr><div class="groupmember"></div><div class="score"><span>Scores:</span></div>
+                </div>
+                <div class="g2"><div class="stitle"><span>Group B</span></div><button class="groupbtn" id='grpplus'><image src='../media/groupplus.svg' height='30px'></image></button>
+                <hr><div class="groupmember"></div><div class="score"><span>Scores:</span></div>
+                </div>
+                <div class="g3"><div class="stitle"><span>Group C</span></div><button class="groupbtn" id='grpplus'><image src='../media/groupplus.svg' height='30px'></image></button>
+                <hr><div class="groupmember"></div><div class="score"><span>Scores:</span></div>
+                </div>
+            </div>
+            <div class="fourgrp">
+                <div class="g1"><div class="stitle"><span>Group A</span></div><button class="groupbtn" id='grpplus'><image src='../media/groupplus.svg' height='30px'></image></button>
+                <hr><div class="groupmember"></div><div class="score"><span>Scores:</span></div>
+                </div>
+                <div class="g2"><div class="stitle"><span>Group B</span></div><button class="groupbtn" id='grpplus'><image src='../media/groupplus.svg' height='30px'></image></button>
+                <hr><div class="groupmember"></div><div class="score"><span>Scores:</span></div>
+                </div>
+                <div class="g3"><div class="stitle"><span>Group C</span></div><button class="groupbtn" id='grpplus'><image src='../media/groupplus.svg' height='30px'></image></button>
+                <hr><div class="groupmember"></div><div class="score"><span>Scores:</span></div>
+                </div>
+                <div class="g4"><div class="stitle"><span>Group D</span></div><button class="groupbtn" id='grpplus'><image src='../media/groupplus.svg' height='30px'></image></button>
+                <hr><div class="groupmember"></div><div class="score"><span>Scores:</span></div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+
+</html>

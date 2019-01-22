@@ -21,6 +21,7 @@
 		//初始化参数
 		this.title = args.title || "";
 		this.content = args.content || "";
+        this.heights = args.heights;
 		this.isModal = (typeof args.isModal === "boolean") ? args.isModal : true;
 		this.moveable = (typeof args.moveable === "boolean") ? args.moveable : true;
 		this.document = args.document || document;
@@ -54,8 +55,9 @@
             }
 			$("body", this.document).append(this.myPop);
             $(".myPop-title-value", this.myPop).html(this.title);//设置标题
-            console.log(this.myPop.outerHeight());
-            this.myPop.css("top", (this.document.documentElement.scrollHeight - this.myPop.outerHeight()) / 2 + "px");
+            // console.log(this.myPop.outerHeight());
+            // console.log(this.myPop.outerWidth());
+            this.myPop.css("top", (this.document.documentElement.scrollHeight - this.heights) / 2 + "px");
 			this.myPop.css("left", (this.document.documentElement.scrollWidth - this.myPop.outerWidth()) / 2 + "px");
             this.myPop.show();
 		},
@@ -134,9 +136,9 @@
 
 	};
 	
-    if (!top.PopLayer) {
-		top.PopLayer = PopLayer;
-	}
+    // if (!top.PopLayer) {
+	top.PopLayer = PopLayer;
+	// }
   
 })()
 
@@ -239,7 +241,7 @@ function save() {
         var merge = document.getElementById('can').getContext("2d");
         //background of handwriting
      	// var bkg = new Image();
-     	// bkg.src = "./media/lined-paper.svg";
+     	// bkg.src = "../media/lined-paper.svg";
      	// bkg.crossOrigin = "anonymous";
      	// gender.crossOrigin = "anonymous";
         merge.drawImage(gender,5,0);
@@ -561,11 +563,12 @@ $(document).delegate('#plus', 'click', function(event) {
         new top.PopLayer({
             "title": "",
             "content":
-            "<p><img src='./media/boy.svg' id='boy' class='figure' width='200px'  onclick='boy()'> \
-            <img src='./media/girl.svg' id='girl' class='figure' width='200px'  onclick='girl()'></p> \
+            "<p><img src='../media/boy.svg' id='boy' class='figure' width='200px'  onclick='boy()'> \
+            <img src='../media/girl.svg' id='girl' class='figure' width='200px'  onclick='girl()'></p> \
             <canvas id='myCanvas' width='350px' height='auto' style='display:none'></canvas>\
-            <button id='clr' onclick='erase()'><img id='eraser' src='./media/eraser.svg' width='25px' style='display:none'></button> \
-            <div align='center'><button class='create' id='create' style='display:none' onclick='save()'> &nbsp;&nbsp; Create &nbsp;&nbsp; </button></div>"
+            <button id='clr' onclick='erase()'><img id='eraser' src='../media/eraser.svg' width='25px' style='display:none'></button> \
+            <div align='center'><button class='create' id='create' style='display:none' onclick='save()'> &nbsp;&nbsp; Create &nbsp;&nbsp; </button></div>",
+            "heights": 145
         });
 
 })
@@ -579,9 +582,10 @@ $(document).delegate('#team', 'click', function(event) {
         new top.PopLayer({
         "title": "",
         "content":
-        "<img src='./media/g1.png' class='team' width='400px'  onclick='twogrp()'> \
-        <img src='./media/g2.png'  class='team' width='400px'  onclick='threegrp()'> \
-        <img src='./media/g3.png'  class='team' width='400px'  onclick='fourgrp()'>"
+        "<img src='../media/g1.svg' class='team' width = '400px'  onclick='twogrp()'> \
+        <img src='../media/g2.svg'  class='team' width = '400px'  onclick='threegrp()'> \
+        <img src='../media/g3.svg'  class='team' width = '400px'  onclick='fourgrp()'>",
+        "heights":553
         });
         
 
@@ -658,16 +662,23 @@ var stardeleteflag = true;
 $(document).delegate('#deletestar', 'click', function(){
 
     stardeleteflag =  false;
+    $('.scorep').addClass('flip animated');
+    $('.scoreg').addClass('flip animated');
+
     $('.scorep , .scoreg').on('click',function(){
         if (!stardeleteflag){
             $(this).remove();
             stardeleteflag = true;
+            $('.scorep').removeClass('flip animated');
+            $('.scoreg').removeClass('flip animated');
         }  
     })
 
     $('body').on('click', function(e){
         if(!stardeleteflag){
             stardeleteflag = true;
+            $('.scorep').removeClass('flip animated');
+            $('.scoreg').removeClass('flip animated');
         }
     })
 })

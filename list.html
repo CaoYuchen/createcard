@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <title>Fullscreen</title>
+    <link type="text/css" href="css/list.css" rel='stylesheet'>
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <button class="menuButton" id="overlay-menu" type="button"><img src="./media/student-group.svg"  width="40px"></button>
+    </div>
+    <div class="overlay overlay-data">
+        <button type="button" class="overlay-close"><img src="./media/close.svg" width="20px"></button>
+        <iframe src='html/main.html' frameborder='0' scrolling='no' width="100%" height="100%"></iframe>
+    </div>
+    <script>
+    $("#overlay-menu").click(function() {
+        $(".overlay").addClass('overlay-open');
+    });
+
+    $(".overlay-close").click(function() {
+        $(".overlay").removeClass('overlay-open');
+    });
+    </script>
+</body>
+
+</html>
