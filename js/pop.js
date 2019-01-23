@@ -490,6 +490,13 @@ $(document).delegate('.delete', 'click', function(event) {
     deleteflag=false;
     hidedelete();
 
+    //delete star
+    classname = $(this).attr("id");
+    classname = classname.replace("d","m");
+    classname = '.scorep.'+classname;
+    console.log(classname);
+    $(classname).remove();
+
     for(k;k<number;k++)
     {   
         var tmp1 = document.getElementById("m"+k).src;
@@ -623,10 +630,9 @@ $(document).delegate('.star', 'click', function(event) {
         if(!starflag){
         xc = e.pageX;
         yc = e.pageY;
-        // console.log(xc);
-        // console.log(src);
-
-        star = '<img class="scorep" src="'+ src +'" width="30px" style="top:'+yc +'px;left:'+xc+'px">';
+        classname = $(this).attr("id");
+        star = '<img class="scorep ' + classname + '" src="'+ src +'" width="30px" style="top:'+yc +'px;left:'+xc+'px">';
+        console.log(classname);
         $('#main').append(star);
 
         $('body').css('cursor','auto');
@@ -682,3 +688,29 @@ $(document).delegate('#deletestar', 'click', function(){
         }
     })
 })
+
+
+$(function(){
+    document.oncontextmenu = function(){
+        return false;
+    }
+    document.onselectstart = function() {
+        return false;
+    }
+    document.onselectstart = function(){
+        return false;
+    }
+    document.onkeydown = function() {
+        if (event.ctrlKey) {
+            return false;
+        }
+        if (event.altKey) {
+            return false;
+        }
+        if (event.shiftKey) {
+            return false;
+        }
+    }
+})
+
+
