@@ -391,6 +391,9 @@ $(document).delegate('#grpplus', 'click', function(event) {
         }
     }
 
+    hidegroupdelete();
+    groupdeleteflag = false;
+
     // $('body').on('click', function(e){
     //     if(plusflag){
     //         hideplus();
@@ -427,6 +430,8 @@ $(document).delegate('.groupplus', 'click', function(event) {
 
     // plusflag = false;
     // hideplus();
+    //hide each after click
+    $(this).hide();
 
     var n = $(this).attr("id");
     n = parseInt(n.replace("p",""));
@@ -450,6 +455,9 @@ $(document).delegate('#grpminus', 'click', function(event) {
             groupdeleteflag = false;
         }
     }
+
+    hideplus();
+    plusflag = false;
     // $('body').on('click', function(e){
     //     if(groupdeleteflag){
     //         hidegroupdelete();
