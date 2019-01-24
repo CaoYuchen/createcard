@@ -378,7 +378,11 @@ var classname = null;
 var subclass = null;
 $(function() {
 $(document).delegate('#grpplus', 'click', function(event) {
-    if(number > 0 && !groupdeleteflag){
+    
+    hidegroupdelete();
+    groupdeleteflag = false;
+
+    if(number > 0){
         if(!plusflag){
             showplus();
             plusflag = true;
@@ -390,9 +394,6 @@ $(document).delegate('#grpplus', 'click', function(event) {
             plusflag = false;
         }
     }
-
-    hidegroupdelete();
-    groupdeleteflag = false;
 
     // $('body').on('click', function(e){
     //     if(plusflag){
@@ -445,7 +446,10 @@ $(document).delegate('.groupplus', 'click', function(event) {
 var groupdeleteflag = false;
 $(function() {
 $(document).delegate('#grpminus', 'click', function(event) {
-    if(number > 0 && !plusflag){
+    hideplus();
+    plusflag = false;
+
+    if(number > 0){
         if(!groupdeleteflag){
             showgroupdelete();
             groupdeleteflag = true;
@@ -456,8 +460,7 @@ $(document).delegate('#grpminus', 'click', function(event) {
         }
     }
 
-    hideplus();
-    plusflag = false;
+
     // $('body').on('click', function(e){
     //     if(groupdeleteflag){
     //         hidegroupdelete();
