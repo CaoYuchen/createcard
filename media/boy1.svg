@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 191 103" style="enable-background:new 0 0 191 103;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#2EA1D9;}
+	.st1{filter:url(#Adobe_OpacityMaskFilter);}
+	.st2{fill:#FFFFFF;}
+	.st3{mask:url(#mask-2_1_);}
+</style>
+<title>Cards/boy</title>
+<desc>Created with Sketch.</desc>
+<polygon id="Color" class="st0" points="0,0 191,0 191,103.1 0,103.1 "/>
+<g id="ic_face" transform="translate(70.000000, 29.000000)">
+	<g id="Mask">
+	</g>
+	<defs>
+		<filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="-26.5" y="-26" width="102" height="100">
+			<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+		</filter>
+	</defs>
+	<mask maskUnits="userSpaceOnUse" x="-26.5" y="-26" width="102" height="100" id="mask-2_1_">
+		<g class="st1">
+			<path id="path-1_1_" class="st2" d="M18.4,23.5c-1.4,0-2.6,1.1-2.6,2.5s1.1,2.5,2.6,2.5s2.6-1.1,2.6-2.5S19.8,23.5,18.4,23.5
+				L18.4,23.5z M30.6,23.5c-1.4,0-2.6,1.1-2.6,2.5s1.1,2.5,2.6,2.5c1.4,0,2.6-1.1,2.6-2.5S32,23.5,30.6,23.5L30.6,23.5z M24.5,4
+				C13.2,4,4.1,13,4.1,24s9.1,20,20.4,20s20.4-9,20.4-20S35.8,4,24.5,4L24.5,4z M24.5,40c-9,0-16.3-7.2-16.3-16c0-0.6,0-1.2,0.1-1.7
+				c4.8-2.1,8.6-6,10.6-10.7c3.7,5.1,9.8,8.5,16.7,8.5c1.6,0,3.1-0.2,4.6-0.5c0.4,1.4,0.7,2.9,0.7,4.5C40.8,32.8,33.5,40,24.5,40
+				L24.5,40z"/>
+		</g>
+	</mask>
+	<g id="Colors_x2F_Black-Copy-3" class="st3">
+		<g transform="translate(-26.541667, -26.000000)">
+			<g id="Black">
+				<rect id="path-3_1_" x="0" class="st2" width="102" height="100"/>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>

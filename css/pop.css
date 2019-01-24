@@ -262,7 +262,7 @@ div.member-layer {
 
 .threegrp .g2 {
     width: 30%;
-    display: inline-block;
+    float:left;
     margin-left: 5%;
 }
 
@@ -279,14 +279,14 @@ div.member-layer {
 
 .fourgrp .g2 {
     width: 20%;
-    display: inline-block;
+    float:left;
     margin-left: 6.6%
 }
 
 
 .fourgrp .g3 {
     width: 20%;
-    display: inline-block;
+    float:left;
     margin-left: 6.6%
 }
 

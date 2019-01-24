@@ -277,7 +277,7 @@ function hidedelete(){
 function showplus(){
     for(var i=1;i<number+1;i++)
     { 
-        if (used[i-1] == 0)
+        if (used[grpnumber+i-1] == 0)
         {
         document.getElementById("p"+i).style.display = "inline-block";
         $('#plus').attr("disabled",true);
@@ -300,35 +300,37 @@ function hideplus(){
  function showgroupdelete(){
     for(var i=0;i<max;i++)
     {  
-        if(used[i]==1)
+        if(used[grpnumber+i]==1)
         {
-            document.getElementById("gd"+(i+1)).style.display = "inline-block";
+            document.getElementById(grpindex+"g"+"d"+(i+1)).style.display = "inline-block";
             $('#plus').attr("disabled",true);
             $('#minus').attr("disabled",true);
             $('#groupplus').attr("disabled",true); 
         }
    
     }
-    }
+}
 
-    function hidegroupdelete(){
+function hidegroupdelete(){
     for(var i=0;i<max;i++)
     {  
-        if(used[i]==1)
+        if(used[grpnumber+i]==1)
         {
-            document.getElementById("gd"+(i+1)).style.display = "none";
+            document.getElementById(grpindex+"g"+"d"+(i+1)).style.display = "none";
             $('#plus').attr("disabled",false);
             $('#minus').attr("disabled",false);
             $('#groupplus').attr("disabled",false);
         }
     }
-    }     
+}     
 
-function boy() {
+function boyorgirl(name) {
     if(imageflag){
-        document.getElementById("girl").style.display = "none";
-        document.getElementById("boy").width = "350";
-        gender.src = document.getElementById("boy").src;
+        // name = arg.name;
+        $('.figure').hide();
+        $("#" + name).attr("width","350px");
+        $("#" + name).show();
+        gender.src = document.getElementById(name).src;
         document.getElementById("myCanvas").style.display = "inline";
         document.getElementById("eraser").style.display = "inline-block";
         document.getElementById("create").style.display = "block";
@@ -340,26 +342,14 @@ function boy() {
     // initCanvas();
 }
 
-function girl() {
-    if(imageflag){
-        document.getElementById("boy").style.display = "none";
-        document.getElementById("girl").width = "350";
-        gender.src = document.getElementById("girl").src;
-        document.getElementById("myCanvas").style.display = "inline-block";
-        document.getElementById("eraser").style.display = "inline-block";
-        document.getElementById("create").style.display = "block";
-        InitThis();
-        imageflag = false;
-    }
-
-}
-
 function twogrp() {
     $('.groups').attr("style","display:inline");
     $('.twogrp').attr("style","display:inline");
     $('.threegrp').attr("style","display:none");
     $('.fourgrp').attr("style","display:none");
     teamed =true;
+    grpnumber=0;
+    grpindex="a";
 }
 
 function threegrp() {
@@ -368,6 +358,8 @@ function threegrp() {
     $('.twogrp').attr("style","display:none");
     $('.fourgrp').attr("style","display:none");
     teamed =true;
+    grpnumber=20;
+    grpindex="b";
 }
 
 function fourgrp() {
@@ -376,9 +368,11 @@ function fourgrp() {
     $('.twogrp').attr("style","display:none");
     $('.threegrp').attr("style","display:none");
     teamed =true;
+    grpnumber=40;
+    grpindex="c";
 }
 
-
+//group plus button show up
 var plusflag = false;
 var classname = null;
 var subclass = null;
@@ -397,16 +391,52 @@ $(document).delegate('#grpplus', 'click', function(event) {
         }
     }
 
-    $('body').on('click', function(e){
-        if(plusflag){
-            hideplus();
-            plusflag = false;
-        }
-    })     
+    // $('body').on('click', function(e){
+    //     if(plusflag){
+    //         hideplus();
+    //         plusflag = false;
+    //     }
+    // })     
+})
+})
+
+//group add function
+var used = new Array(3*max);
+var grpnumber, grpindex;
+for(var i=0; i<3*max; i++)
+    used[i]=0;
+
+$(function() {
+$(document).delegate('.groupplus', 'click', function(event) {
+    
+    var index = $(this).siblings('.member').attr("id");
+    // console.log(index);
+    // var content = '<img class="member" id="g' + index + '" ' + src + ' width="120px">';
+    // copy image
+    var content = $("#"+index).clone();
+    index = index.replace("m","g");
+    content.attr("id",grpindex+index);
+    content.attr("class", "gmember");
+    $('.' + classname + ' > .' + subclass + ' > .groupmember').append(content);
+    // copy button
+    index = $(this).siblings('.delete').attr("id");
+    content = $("#"+index).clone();
+    content.attr("id",grpindex+"g"+index);
+    content.attr("class","gdelete");
+    $('.' + classname + ' > .' + subclass + ' > .groupmember').append(content);
+
+    // plusflag = false;
+    // hideplus();
+
+    var n = $(this).attr("id");
+    n = parseInt(n.replace("p",""));
+    used[grpnumber+n-1] = 1;
+    
 })
 })
 
 
+//group delete button show up
 var groupdeleteflag = false;
 $(function() {
 $(document).delegate('#grpminus', 'click', function(event) {
@@ -420,33 +450,49 @@ $(document).delegate('#grpminus', 'click', function(event) {
             groupdeleteflag = false;
         }
     }
-    $('body').on('click', function(e){
-        if(groupdeleteflag){
-            hidegroupdelete();
-            groupdeleteflag = false;
-        }
-    })
+    // $('body').on('click', function(e){
+    //     if(groupdeleteflag){
+    //         hidegroupdelete();
+    //         groupdeleteflag = false;
+    //     }
+    // })
 })
 })
 
-
+//group delete
 $(function() {
 $(document).delegate('.gdelete', 'click', function(event) {
+    // groupdeleteflag=false;
+    // hidegroupdelete();
+
     var index = $(this).attr("id");
     // console.log(index);
     $("#" + index).remove();
     index = index.replace("gd","g");
     $("#" + index).remove();
-    index = parseInt(index.replace("g",""));
+    index = parseInt(index.replace(grpindex+"g",""));
     // console.log(index);
-    used[index-1]=0;
-
-    groupdeleteflag=false;
-    hidegroupdelete();
+    used[grpnumber+index-1]=0;
 })
 })
 
 
+//group hide button
+$(function(){
+$(document).delegate('#grpcancel', 'click', function(event) {
+    if(plusflag){
+        hideplus();
+        plusflag = false;
+    }
+    if(groupdeleteflag){
+        hidegroupdelete();
+        groupdeleteflag = false;
+    }
+
+})
+})
+
+// individual delete button showup
 var deleteflag = false;
 $(function() {
 $(document).delegate('#minus', 'click', function(event) {
@@ -471,7 +517,7 @@ $(document).delegate('#minus', 'click', function(event) {
 })
 
 
-
+// individual delete
 $(function() {
 $(document).delegate('.delete', 'click', function(event) {
 
@@ -510,9 +556,9 @@ $(document).delegate('.delete', 'click', function(event) {
         var tmp3 = document.getElementById("p"+k).src;
         document.getElementById("p"+k).src=document.getElementById("p"+(k+1)).src;
         document.getElementById("p"+(k+1)).src=tmp3;
-        var n = used[k-1];
-        used[k-1]=used[k];
-        used[k]=n;
+        var n = used[grpnumber+k-1];
+        used[grpnumber+k-1]=used[grpnumber+k];
+        used[grpnumber+k]=n;
     }
 
     // console.log(k);
@@ -527,42 +573,7 @@ $(document).delegate('.delete', 'click', function(event) {
 })
 
 
-var used = new Array(max);
-for(var i=0; i<max; i++)
-    used[i]=0;
-
-
-$(function() {
-$(document).delegate('.groupplus', 'click', function(event) {
-    
-    var index = $(this).siblings('.member').attr("id");
-    // console.log(index);
-    // var content = '<img class="member" id="g' + index + '" ' + src + ' width="120px">';
-    // copy image
-    var content = $("#"+index).clone();
-    index = index.replace("m","g");
-    content.attr("id",index);
-    content.attr("class", "gmember");
-    $('.' + classname + ' > .' + subclass + ' > .groupmember').append(content);
-    // copy button
-    index = $(this).siblings('.delete').attr("id");
-    content = $("#"+index).clone();
-    content.attr("id","g"+index);
-    content.attr("class","gdelete");
-    $('.' + classname + ' > .' + subclass + ' > .groupmember').append(content);
-
-    plusflag = false;
-    hideplus();
-
-    var n = $(this).attr("id");
-    n = parseInt(n.replace("p",""));
-    used[n-1] = 1;
-    
-})
-})
-
-
-
+// add individual
 var imageflag;
 $(function() {
 $(document).delegate('#plus', 'click', function(event) {
@@ -570,8 +581,12 @@ $(document).delegate('#plus', 'click', function(event) {
         new top.PopLayer({
             "title": "",
             "content":
-            "<p><img src='../media/boy.svg' id='boy' class='figure' width='200px'  onclick='boy()'> \
-            <img src='../media/girl.svg' id='girl' class='figure' width='200px'  onclick='girl()'></p> \
+            "<p><img src='../media/boy1.svg' id='boy1' class='figure' width='200px'  onclick='boyorgirl(\"boy1\")'> \
+            <img src='../media/girl1.svg' id='girl1' class='figure' width='200px'  onclick='boyorgirl(\"girl1\")'></p> \
+            <p><img src='../media/boy2.svg' id='boy2' class='figure' width='200px'  onclick='boyorgirl(\"boy2\")'> \
+            <img src='../media/girl2.svg' id='girl2' class='figure' width='200px'  onclick='boyorgirl(\"girl2\")'></p> \
+            <p><img src='../media/boy3.svg' id='boy3' class='figure' width='200px'  onclick='boyorgirl(\"boy3\")'> \
+            <img src='../media/girl3.svg' id='girl3' class='figure' width='200px'  onclick='boyorgirl(\"girl3\")'></p> \
             <canvas id='myCanvas' width='350px' height='auto' style='display:none'></canvas>\
             <button id='clr' onclick='erase()'><img id='eraser' src='../media/eraser.svg' width='25px' style='display:none'></button> \
             <div align='center'><button class='create' id='create' style='display:none' onclick='save()'> &nbsp;&nbsp; Create &nbsp;&nbsp; </button></div>",
@@ -581,6 +596,8 @@ $(document).delegate('#plus', 'click', function(event) {
 })
 })
 
+
+// team choice
 var teamed = false;
 $(function() {
 $(document).delegate('#team', 'click', function(event) {
@@ -594,29 +611,51 @@ $(document).delegate('#team', 'click', function(event) {
         <img src='../media/g3.svg'  class='team' width = '400px'  onclick='fourgrp()'>",
         "heights":553
         });
-        
+    }
+})
+})
 
-        $('#noteam').click(function(){
+//clear team
+$(function() {
+    $('#noteam').click(function(){
+        if(teamed){
             $('.groups').attr("style","display:none");
-            
+        
             teamed = false;
-            for(var i=0; i<max; i++)
+            for(var i=0; i<3*max; i++)
             {
                 used[i]=0;
             }
 
             $(".groupmember").html("");
             $(".score").html("<span>Scores:</span>");
-        });
-    }
-})
+        }
+       
+    });
 })
 
+//hide team
+$(function() {
+    $('#hideteam').click(function(){
+        if(teamed){
+            $('.groups').attr("style","display:none");      
+            teamed = false;
+        }
+       
+    });
+})
 
+//show star on mouse
 var starflag = true;
 var src, xc, yc;
 $(function() {
 $(document).delegate('.star', 'click', function(event) {
+
+
+    stardeleteflag = true;
+    $('.scorep').removeClass('flip animated');
+    $('.scoreg').removeClass('flip animated');
+
 
     src = $(this).find('img').attr("src");
     var cursor = src.replace("svg","png");
@@ -625,7 +664,18 @@ $(document).delegate('.star', 'click', function(event) {
     $('body').css('cursor',cursor);
     starflag = false;
 
-    
+    // $('body').on('click', function(e){
+    //     if(!starflag){
+    //         $('body').css('cursor','auto');
+    //         starflag = true;
+    //     }
+    // })
+
+})
+})
+
+//add star function
+$(function() {
     $('.member').on('click', function(e){
         if(!starflag){
         xc = e.pageX;
@@ -635,8 +685,8 @@ $(document).delegate('.star', 'click', function(event) {
         console.log(classname);
         $('#main').append(star);
 
-        $('body').css('cursor','auto');
-        starflag = true;
+        // $('body').css('cursor','auto');
+        // starflag = true;
         }
     })
 
@@ -649,23 +699,18 @@ $(document).delegate('.star', 'click', function(event) {
         star = '<img class="scoreg" src="'+ src +'" width="30px" align="absmiddle">';
         $(index).append(star);
 
-        $('body').css('cursor','auto');
-        starflag = true;
+        // $('body').css('cursor','auto');
+        // starflag = true;
         }
     })
-
-    $('body').on('click', function(e){
-        if(!starflag){
-            $('body').css('cursor','auto');
-            starflag = true;
-        }
-    })
-
 })
-})
+
 
 var stardeleteflag = true;
 $(document).delegate('#deletestar', 'click', function(){
+
+    starflag = true;
+    $('body').css('cursor','auto');
 
     stardeleteflag =  false;
     $('.scorep').addClass('flip animated');
@@ -674,20 +719,36 @@ $(document).delegate('#deletestar', 'click', function(){
     $('.scorep , .scoreg').on('click',function(){
         if (!stardeleteflag){
             $(this).remove();
-            stardeleteflag = true;
-            $('.scorep').removeClass('flip animated');
-            $('.scoreg').removeClass('flip animated');
+            // stardeleteflag = true;
+            // $('.scorep').removeClass('flip animated');
+            // $('.scoreg').removeClass('flip animated');
         }  
     })
 
-    $('body').on('click', function(e){
-        if(!stardeleteflag){
+    // $('body').on('click', function(e){
+    //     if(!stardeleteflag){
+    //         stardeleteflag = true;
+    //         $('.scorep').removeClass('flip animated');
+    //         $('.scoreg').removeClass('flip animated');
+    //     }
+    // })
+})
+
+
+$(document).delegate('#hidestar', 'click', function(){
+
+    if(!stardeleteflag){
             stardeleteflag = true;
             $('.scorep').removeClass('flip animated');
             $('.scoreg').removeClass('flip animated');
         }
-    })
+
+    if(!starflag){
+            $('body').css('cursor','auto');
+            starflag = true;
+        }  
 })
+
 
 
 $(function(){
@@ -699,17 +760,6 @@ $(function(){
     }
     document.onselectstart = function(){
         return false;
-    }
-    document.onkeydown = function() {
-        if (event.ctrlKey) {
-            return false;
-        }
-        if (event.altKey) {
-            return false;
-        }
-        if (event.shiftKey) {
-            return false;
-        }
     }
 })
 
