@@ -99,14 +99,18 @@
 			//关闭事件
 			$(".myPop-close", this.myPop).on('click', function() {
                 $this.destroy();
+                $('#plus').attr("disabled",false);
+                $('#team').attr("disabled",false);
                 return false;
             });
             $(".create", this.myPop).on('click', function() {
                 $this.destroy();
+                $('#plus').attr("disabled",false);
                 return false;
             });
             $(".team", this.myPop).on('click', function() {
                 $this.destroy();
+                $('#team').attr("disabled",false);
                 return false;
             });
 		},
@@ -280,9 +284,9 @@ function showplus(){
         if (used[grpnumber+i-1] == 0)
         {
         document.getElementById("p"+i).style.display = "inline-block";
-        $('#plus').attr("disabled",true);
-        $('#minus').attr("disabled",true);
-        $('#groupminus').attr("disabled",true);    
+        // $('#plus').attr("disabled",true);
+        // $('#minus').attr("disabled",true);
+        // $('#groupminus').attr("disabled",true);    
         }
     }
 }
@@ -291,37 +295,38 @@ function hideplus(){
      for(var i=1;i<number+1;i++)
     { 
         document.getElementById("p"+i).style.display = "none";
-        $('#plus').attr("disabled",false);
-        $('#minus').attr("disabled",false);
-        $('#groupminus').attr("disabled",false);
+        // $('#plus').attr("disabled",false);
+        // $('#minus').attr("disabled",false);
+        // $('#groupminus').attr("disabled",false);
     }
 }
 
  function showgroupdelete(){
-    for(var i=0;i<max;i++)
-    {  
-        if(used[grpnumber+i]==1)
+    for(var i=1;i<number+1;i++)
+    {
+        if (used[grpnumber+i-1] == 1)
         {
-            document.getElementById(grpindex+"g"+"d"+(i+1)).style.display = "inline-block";
-            $('#plus').attr("disabled",true);
-            $('#minus').attr("disabled",true);
-            $('#groupplus').attr("disabled",true); 
+            document.getElementById(grpindex+"g"+"d"+i).style.display = "inline-block";       
         }
-   
     }
+   
+    // $('#plus').attr("disabled",true);
+    // $('#minus').attr("disabled",true);
+    // $('#groupplus').attr("disabled",true); 
 }
 
 function hidegroupdelete(){
-    for(var i=0;i<max;i++)
-    {  
-        if(used[grpnumber+i]==1)
+    for(var i=1;i<number+1;i++)
+    {
+        if (used[grpnumber+i-1] == 1)
         {
-            document.getElementById(grpindex+"g"+"d"+(i+1)).style.display = "none";
-            $('#plus').attr("disabled",false);
-            $('#minus').attr("disabled",false);
-            $('#groupplus').attr("disabled",false);
+            document.getElementById(grpindex+"g"+"d"+i).style.display = "none";
         }
     }
+    // $(".gdelete").show();
+    // $('#plus').attr("disabled",false);
+    // $('#minus').attr("disabled",false);
+    // $('#groupplus').attr("disabled",false);
 }     
 
 function boyorgirl(name) {
@@ -379,8 +384,15 @@ var subclass = null;
 $(function() {
 $(document).delegate('#grpplus', 'click', function(event) {
     
-    hidegroupdelete();
-    groupdeleteflag = false;
+    if(deleteflag){
+        hidedelete();
+        deleteflag = false;
+    }
+    if(groupdeleteflag){
+        hidegroupdelete();
+        groupdeleteflag = false;
+    }
+
 
     if(number > 0){
         if(!plusflag){
@@ -446,19 +458,27 @@ $(document).delegate('.groupplus', 'click', function(event) {
 var groupdeleteflag = false;
 $(function() {
 $(document).delegate('#grpminus', 'click', function(event) {
-    hideplus();
-    plusflag = false;
-
-    if(number > 0){
-        if(!groupdeleteflag){
-            showgroupdelete();
-            groupdeleteflag = true;
-        }
-        else {
-            hidegroupdelete();
-            groupdeleteflag = false;
-        }
+    
+    if(plusflag){
+        hideplus();
+        plusflag = false;
     }
+
+    if(deleteflag){
+        hidedelete();
+        deleteflag = false;
+    }
+
+
+    if(!groupdeleteflag){
+        showgroupdelete();
+        groupdeleteflag = true;
+    }
+    else {
+        hidegroupdelete();
+        groupdeleteflag = false;
+    }
+
 
 
     // $('body').on('click', function(e){
@@ -507,6 +527,17 @@ $(document).delegate('#grpcancel', 'click', function(event) {
 var deleteflag = false;
 $(function() {
 $(document).delegate('#minus', 'click', function(event) {
+
+    if(plusflag){
+        hideplus();
+        plusflag = false;
+    }
+    if(groupdeleteflag){
+        hidegroupdelete();
+        groupdeleteflag = false;
+    }
+
+
     if(number > 0 ){
         if(!deleteflag){
             showdelete();
@@ -542,6 +573,9 @@ $(document).delegate('.delete', 'click', function(event) {
     else
         ind = index[1]+index[2];    
     k = Number(ind);
+    used[k-1]=0;
+    used[20+k-1]=0;
+    used[40+k-1]=0;
 
     //hide delete button
     deleteflag=false;
@@ -551,8 +585,31 @@ $(document).delegate('.delete', 'click', function(event) {
     classname = $(this).attr("id");
     classname = classname.replace("d","m");
     classname = '.scorep.'+classname;
-    console.log(classname);
+    // console.log(classname);
     $(classname).remove();
+
+    //delete relative member in group
+    classname = $(this).attr("id");
+    idname = classname.replace("d","#ag");
+    if($(idname))
+        $(idname).remove();
+    idname = classname.replace("d","#bg");
+    if($(idname))
+        $(idname).remove();
+    idname = classname.replace("d","#cg");
+    if($(idname))
+        $(idname).remove();
+
+    idname = classname.replace("d","#agd");
+    if($(idname))
+        $(idname).remove();
+    idname = classname.replace("d","#bgd");
+    if($(idname))
+        $(idname).remove();
+    idname = classname.replace("d","#cgd");
+    if($(idname))
+        $(idname).remove();
+
 
     for(k;k<number;k++)
     {   
@@ -567,10 +624,37 @@ $(document).delegate('.delete', 'click', function(event) {
         var tmp3 = document.getElementById("p"+k).src;
         document.getElementById("p"+k).src=document.getElementById("p"+(k+1)).src;
         document.getElementById("p"+(k+1)).src=tmp3;
-        var n = used[grpnumber+k-1];
-        used[grpnumber+k-1]=used[grpnumber+k];
-        used[grpnumber+k]=n;
+
     }
+
+    k = Number(ind);
+    for(k;k<number+1;k++)
+    {
+        if(used[k-1] == 1){
+            $("#agd"+k).attr("id","agd"+(k-1));
+            $("#ag"+k).attr("id","ag"+(k-1));
+        }
+           
+        if(used[k+20-1] == 1){
+            $("#bgd"+k).attr("id","bgd"+(k-1));
+            $("#bg"+k).attr("id","bg"+(k-1));
+        }
+        if(used[k+40-1] == 1){
+            $("#cgd"+k).attr("id","cgd"+(k-1));
+            $("#cg"+k).attr("id","cg"+(k-1));
+        }
+    }
+
+
+    k = Number(ind);
+    for(k;k<number+1;k++)
+    {
+        for(kk=0;kk<3;kk++){
+            var n = used[kk*20+k-1];
+            used[kk*20+k-1]=used[kk*20+k];
+            used[kk*20+k]=n;
+        }  
+    }       
 
     // console.log(k);
 
@@ -588,6 +672,21 @@ $(document).delegate('.delete', 'click', function(event) {
 var imageflag;
 $(function() {
 $(document).delegate('#plus', 'click', function(event) {
+        
+        if(plusflag){
+            hideplus();
+            plusflag = false;
+        }
+        if(groupdeleteflag){
+            hidegroupdelete();
+            groupdeleteflag = false;
+        }
+        if(deleteflag){
+            hidedelete();
+            deleteflag = false;
+        }
+        $('#plus').attr("disabled",true);
+
         imageflag = true;
         new top.PopLayer({
             "title": "",
@@ -622,6 +721,8 @@ $(document).delegate('#team', 'click', function(event) {
         <img src='../media/g3.svg'  class='team' width = '400px'  onclick='fourgrp()'>",
         "heights":553
         });
+
+    $('#team').attr("disabled",true);
     }
 })
 })
@@ -629,6 +730,21 @@ $(document).delegate('#team', 'click', function(event) {
 //clear team
 $(function() {
     $('#noteam').click(function(){
+
+        if(plusflag){
+            hideplus();
+            plusflag = false;
+        }
+        if(groupdeleteflag){
+            hidegroupdelete();
+            groupdeleteflag = false;
+        }
+        if(deleteflag){
+            hidedelete();
+            deleteflag = false;
+        }
+
+
         if(teamed){
             $('.groups').attr("style","display:none");
         
@@ -648,6 +764,20 @@ $(function() {
 //hide team
 $(function() {
     $('#hideteam').click(function(){
+
+        if(plusflag){
+            hideplus();
+            plusflag = false;
+        }
+        if(groupdeleteflag){
+            hidegroupdelete();
+            groupdeleteflag = false;
+        }
+        if(deleteflag){
+            hidedelete();
+            deleteflag = false;
+        }
+
         if(teamed){
             $('.groups').attr("style","display:none");      
             teamed = false;
